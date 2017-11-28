@@ -1,0 +1,18 @@
+#version 330 core
+
+// Interpolated values from the vertex shaders
+
+in vec3 Fposition;
+in vec2 Fuv;
+in vec3 Fnormal;
+
+// Ouput data
+out vec3 color;
+
+uniform mat4 mvp;
+
+void main(){
+
+	color = vec3(0.f,1.f,0.f);
+
+}

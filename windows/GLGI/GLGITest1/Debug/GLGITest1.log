@@ -1,0 +1,93 @@
+﻿  GLGITest1.cpp
+c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): warning C4473: 'fscanf_s' : not enough arguments passed for format string
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): note: the missing variadic argument 2 is required by format string '%s'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): note: this argument is used as a buffer size
+c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\gtx\transform.hpp(22): warning C4005: 'GLM_ENABLE_EXPERIMENTAL': macro redefinition
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(22): note: see previous definition of 'GLM_ENABLE_EXPERIMENTAL'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(52): warning C4251: 'GLGI::PackedVertex::position': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(53): warning C4251: 'GLGI::PackedVertex::uv': struct 'glm::vec<2,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(136): note: see declaration of 'glm::vec<2,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(54): warning C4251: 'GLGI::PackedVertex::normal': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): warning C4251: 'GLGI::Mesh::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of struct 'GLGI::Mesh'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(101): warning C4251: 'GLGI::Camera::PerspectiveMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(102): warning C4251: 'GLGI::Camera::ViewMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(103): warning C4251: 'GLGI::Camera::CameraLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(104): warning C4251: 'GLGI::Camera::CameraRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(105): warning C4251: 'GLGI::Camera::CameraScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(144): warning C4251: 'GLGI::Object::ModelMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(145): warning C4251: 'GLGI::Object::ModelLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(146): warning C4251: 'GLGI::Object::ModelRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(147): warning C4251: 'GLGI::Object::ModelScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): warning C4251: 'GLGI::Scene::objects': class 'std::vector<GLGI::Object *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+          with
+          [
+              _Ty=GLGI::Object *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): note: see declaration of 'std::vector<GLGI::Object *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Object *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): warning C4251: 'GLGI::Scene::cameras': class 'std::vector<GLGI::Camera *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+          with
+          [
+              _Ty=GLGI::Camera *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): note: see declaration of 'std::vector<GLGI::Camera *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Camera *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): warning C4251: 'GLGI::ResourceManager::meshes': class 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=GLGI::Mesh *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): note: see declaration of 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Mesh *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): warning C4251: 'GLGI::ResourceManager::meshStarts': class 'std::vector<unsigned int,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=unsigned int
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(28): note: see declaration of 'std::vector<unsigned int,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=unsigned int
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(173): warning C4251: 'GLGI::ResourceManager::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+  GLGITest1.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGITest1.exe
+  GLGITest1.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGITest1.pdb (Partial PDB)

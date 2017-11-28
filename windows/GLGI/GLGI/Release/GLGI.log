@@ -1,0 +1,9 @@
+﻿  stdafx.cpp
+  dllmain.cpp
+  GLGI.cpp
+     Creating library C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Release\GLGI.lib and object C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Release\GLGI.exp
+  Generating code
+  All 5 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  GLGI.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Release\GLGI.dll
+  GLGI.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Release\GLGI.pdb (Full PDB)
