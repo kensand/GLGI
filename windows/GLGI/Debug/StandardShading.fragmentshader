@@ -7,12 +7,11 @@ in vec2 Fuv;
 in vec3 Fnormal;
 
 // Ouput data
-out vec3 color;
+out vec4 fcolor;
 
-uniform mat4 mvp;
+uniform mat4 mvpMatrix;
 
 void main(){
-
-	color = vec3(0.f,1.f,0.f);
+	fcolor = vec4(0.f,1.f,0.f, 1.f);
 
 }

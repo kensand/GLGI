@@ -13,3 +13,9 @@ void GLGI::Scene::addCamera(Camera * c) {
 	this->cameras.push_back(c);
 	
 }
+
+
+void GLGI::Scene::update() {
+
+}
+

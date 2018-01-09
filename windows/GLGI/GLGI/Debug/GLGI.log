@@ -1,181 +1,296 @@
-﻿  Scene.cpp
+﻿  InputManager.cpp
 c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\gtx\transform.hpp(22): warning C4005: 'GLM_ENABLE_EXPERIMENTAL': macro redefinition
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(22): note: see previous definition of 'GLM_ENABLE_EXPERIMENTAL'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(52): warning C4251: 'GLGI::PackedVertex::position': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(56): warning C4251: 'GLGI::PackedVertex::position': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(53): warning C4251: 'GLGI::PackedVertex::uv': struct 'glm::vec<2,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(57): warning C4251: 'GLGI::PackedVertex::normal': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(58): warning C4251: 'GLGI::PackedVertex::uv': struct 'glm::vec<2,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(136): note: see declaration of 'glm::vec<2,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(54): warning C4251: 'GLGI::PackedVertex::normal': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): warning C4251: 'GLGI::Mesh::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of struct 'GLGI::Mesh'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): warning C4251: 'GLGI::Mesh::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of struct 'GLGI::Mesh'
           with
           [
               _Ty=GLGI::PackedVertex
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
           with
           [
               _Ty=GLGI::PackedVertex
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(101): warning C4251: 'GLGI::Camera::PerspectiveMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(108): warning C4251: 'GLGI::Camera::PerspectiveMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(102): warning C4251: 'GLGI::Camera::ViewMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(109): warning C4251: 'GLGI::Camera::ViewMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(103): warning C4251: 'GLGI::Camera::CameraLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(110): warning C4251: 'GLGI::Camera::CameraLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(104): warning C4251: 'GLGI::Camera::CameraRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(111): warning C4251: 'GLGI::Camera::CameraRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(105): warning C4251: 'GLGI::Camera::CameraScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(112): warning C4251: 'GLGI::Camera::CameraScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(144): warning C4251: 'GLGI::Object::ModelMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): warning C4251: 'GLGI::Object::ModelMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(145): warning C4251: 'GLGI::Object::ModelLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): warning C4251: 'GLGI::Object::ModelLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(146): warning C4251: 'GLGI::Object::ModelRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(173): warning C4251: 'GLGI::Object::ModelRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(147): warning C4251: 'GLGI::Object::ModelScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(174): warning C4251: 'GLGI::Object::ModelScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
   c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): warning C4251: 'GLGI::Scene::objects': class 'std::vector<GLGI::Object *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(189): warning C4251: 'GLGI::Scene::objects': class 'std::vector<GLGI::Object *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
           with
           [
               _Ty=GLGI::Object *
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): note: see declaration of 'std::vector<GLGI::Object *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(189): note: see declaration of 'std::vector<GLGI::Object *,std::allocator<_Ty>>'
           with
           [
               _Ty=GLGI::Object *
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): warning C4251: 'GLGI::Scene::cameras': class 'std::vector<GLGI::Camera *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(190): warning C4251: 'GLGI::Scene::cameras': class 'std::vector<GLGI::Camera *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
           with
           [
               _Ty=GLGI::Camera *
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): note: see declaration of 'std::vector<GLGI::Camera *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(190): note: see declaration of 'std::vector<GLGI::Camera *,std::allocator<_Ty>>'
           with
           [
               _Ty=GLGI::Camera *
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): warning C4251: 'GLGI::ResourceManager::meshes': class 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(201): warning C4251: 'GLGI::ResourceManager::meshes': class 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
           with
           [
               _Ty=GLGI::Mesh *
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): note: see declaration of 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(201): note: see declaration of 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>'
           with
           [
               _Ty=GLGI::Mesh *
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): warning C4251: 'GLGI::ResourceManager::meshStarts': class 'std::vector<::size_t,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(202): warning C4251: 'GLGI::ResourceManager::meshStarts': class 'std::vector<::size_t,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
           with
           [
               _Ty=::size_t
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): note: see declaration of 'std::vector<::size_t,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(202): note: see declaration of 'std::vector<::size_t,std::allocator<_Ty>>'
           with
           [
               _Ty=::size_t
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(173): warning C4251: 'GLGI::ResourceManager::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(203): warning C4251: 'GLGI::ResourceManager::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
           with
           [
               _Ty=GLGI::PackedVertex
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
           with
           [
               _Ty=GLGI::PackedVertex
           ]
-  GLGI.cpp
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\gtx\transform.hpp(22): warning C4005: 'GLM_ENABLE_EXPERIMENTAL': macro redefinition
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(22): note: see previous definition of 'GLM_ENABLE_EXPERIMENTAL'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(52): warning C4251: 'GLGI::PackedVertex::position': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(53): warning C4251: 'GLGI::PackedVertex::uv': struct 'glm::vec<2,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(136): note: see declaration of 'glm::vec<2,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(54): warning C4251: 'GLGI::PackedVertex::normal': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): warning C4251: 'GLGI::Mesh::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of struct 'GLGI::Mesh'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): warning C4251: 'GLGI::InputManager::keys': class 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
           with
           [
-              _Ty=GLGI::PackedVertex
+              _Ty=GLGI::InputManager::KeyType
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): note: see declaration of 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>'
           with
           [
-              _Ty=GLGI::PackedVertex
+              _Ty=GLGI::InputManager::KeyType
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(101): warning C4251: 'GLGI::Camera::PerspectiveMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(102): warning C4251: 'GLGI::Camera::ViewMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(103): warning C4251: 'GLGI::Camera::CameraLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(104): warning C4251: 'GLGI::Camera::CameraRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(105): warning C4251: 'GLGI::Camera::CameraScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(144): warning C4251: 'GLGI::Object::ModelMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(145): warning C4251: 'GLGI::Object::ModelLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(146): warning C4251: 'GLGI::Object::ModelRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(147): warning C4251: 'GLGI::Object::ModelScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): warning C4251: 'GLGI::Scene::objects': class 'std::vector<GLGI::Object *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): warning C4251: 'GLGI::InputManager::keyFunctions': class 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
           with
           [
-              _Ty=GLGI::Object *
+              _Ty=GLGI::InputManager::KeyFuncType
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(162): note: see declaration of 'std::vector<GLGI::Object *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): note: see declaration of 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>'
           with
           [
-              _Ty=GLGI::Object *
+              _Ty=GLGI::InputManager::KeyFuncType
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): warning C4251: 'GLGI::Scene::cameras': class 'std::vector<GLGI::Camera *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(259): warning C4251: 'GLGI::InputManager::mousePosFunctions': class 'std::vector<GLGI::InputManager::MousePosFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
           with
           [
-              _Ty=GLGI::Camera *
+              _Ty=GLGI::InputManager::MousePosFuncType
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(163): note: see declaration of 'std::vector<GLGI::Camera *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(259): note: see declaration of 'std::vector<GLGI::InputManager::MousePosFuncType,std::allocator<_Ty>>'
           with
           [
-              _Ty=GLGI::Camera *
+              _Ty=GLGI::InputManager::MousePosFuncType
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): warning C4251: 'GLGI::ResourceManager::meshes': class 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(261): warning C4251: 'GLGI::InputManager::mouseButtons': class 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
           with
           [
-              _Ty=GLGI::Mesh *
+              _Ty=GLGI::InputManager::KeyType
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): note: see declaration of 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): note: see declaration of 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>'
           with
           [
-              _Ty=GLGI::Mesh *
+              _Ty=GLGI::InputManager::KeyType
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): warning C4251: 'GLGI::ResourceManager::meshStarts': class 'std::vector<::size_t,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(262): warning C4251: 'GLGI::InputManager::mouseButtonFunctions': class 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
           with
           [
-              _Ty=::size_t
+              _Ty=GLGI::InputManager::KeyFuncType
           ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): note: see declaration of 'std::vector<::size_t,std::allocator<_Ty>>'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): note: see declaration of 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>'
           with
           [
-              _Ty=::size_t
+              _Ty=GLGI::InputManager::KeyFuncType
           ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(173): warning C4251: 'GLGI::ResourceManager::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
-          with
-          [
-              _Ty=GLGI::PackedVertex
-          ]
-  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(59): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
-          with
-          [
-              _Ty=GLGI::PackedVertex
-          ]
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.cpp(101): warning C4018: '<': signed/unsigned mismatch
-c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.cpp(102): warning C4018: '<': signed/unsigned mismatch
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(325): warning C4251: 'GLGI::Renderer::clearColor': struct 'glm::vec<4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Renderer'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(352): note: see declaration of 'glm::vec<4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(28): error C2440: 'initializing': cannot convert from 'GLGI::InputManager::attach::<lambda_86a703067296ca720d7107e14b975eb5>' to 'GLFWkeyfun'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(28): note: No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(34): warning C4018: '<': signed/unsigned mismatch
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(44): warning C4018: '<': signed/unsigned mismatch
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(59): warning C4018: '<': signed/unsigned mismatch
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\inputmanager.cpp(69): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-     Creating library C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGI.lib and object C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGI.exp
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  GLGI.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGI.dll
-  GLGI.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Debug\GLGI.pdb (Partial PDB)
+  Compiling...
+  Camera.cpp
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\gtx\transform.hpp(22): warning C4005: 'GLM_ENABLE_EXPERIMENTAL': macro redefinition
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(22): note: see previous definition of 'GLM_ENABLE_EXPERIMENTAL'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(56): warning C4251: 'GLGI::PackedVertex::position': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(57): warning C4251: 'GLGI::PackedVertex::normal': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(58): warning C4251: 'GLGI::PackedVertex::uv': struct 'glm::vec<2,float,0>' needs to have dll-interface to be used by clients of struct 'GLGI::PackedVertex'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(136): note: see declaration of 'glm::vec<2,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): warning C4251: 'GLGI::Mesh::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of struct 'GLGI::Mesh'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(108): warning C4251: 'GLGI::Camera::PerspectiveMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(109): warning C4251: 'GLGI::Camera::ViewMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(110): warning C4251: 'GLGI::Camera::CameraLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(111): warning C4251: 'GLGI::Camera::CameraRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(112): warning C4251: 'GLGI::Camera::CameraScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Camera'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(171): warning C4251: 'GLGI::Object::ModelMatrix': struct 'glm::mat<4,4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_mat.hpp(303): note: see declaration of 'glm::mat<4,4,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(172): warning C4251: 'GLGI::Object::ModelLocation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(173): warning C4251: 'GLGI::Object::ModelRotation': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(174): warning C4251: 'GLGI::Object::ModelScale': struct 'glm::vec<3,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Object'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(246): note: see declaration of 'glm::vec<3,float,0>'
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(189): warning C4251: 'GLGI::Scene::objects': class 'std::vector<GLGI::Object *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+          with
+          [
+              _Ty=GLGI::Object *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(189): note: see declaration of 'std::vector<GLGI::Object *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Object *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(190): warning C4251: 'GLGI::Scene::cameras': class 'std::vector<GLGI::Camera *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::Scene'
+          with
+          [
+              _Ty=GLGI::Camera *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(190): note: see declaration of 'std::vector<GLGI::Camera *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Camera *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(201): warning C4251: 'GLGI::ResourceManager::meshes': class 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=GLGI::Mesh *
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(201): note: see declaration of 'std::vector<GLGI::Mesh *,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::Mesh *
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(202): warning C4251: 'GLGI::ResourceManager::meshStarts': class 'std::vector<::size_t,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=::size_t
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(202): note: see declaration of 'std::vector<::size_t,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=::size_t
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(203): warning C4251: 'GLGI::ResourceManager::vertices': class 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::ResourceManager'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(65): note: see declaration of 'std::vector<GLGI::PackedVertex,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::PackedVertex
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): warning C4251: 'GLGI::InputManager::keys': class 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyType
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): note: see declaration of 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyType
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): warning C4251: 'GLGI::InputManager::keyFunctions': class 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyFuncType
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): note: see declaration of 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyFuncType
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(259): warning C4251: 'GLGI::InputManager::mousePosFunctions': class 'std::vector<GLGI::InputManager::MousePosFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
+          with
+          [
+              _Ty=GLGI::InputManager::MousePosFuncType
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(259): note: see declaration of 'std::vector<GLGI::InputManager::MousePosFuncType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::InputManager::MousePosFuncType
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(261): warning C4251: 'GLGI::InputManager::mouseButtons': class 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyType
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(256): note: see declaration of 'std::vector<GLGI::InputManager::KeyType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyType
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(262): warning C4251: 'GLGI::InputManager::mouseButtonFunctions': class 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>' needs to have dll-interface to be used by clients of class 'GLGI::InputManager'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyFuncType
+          ]
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(257): note: see declaration of 'std::vector<GLGI::InputManager::KeyFuncType,std::allocator<_Ty>>'
+          with
+          [
+              _Ty=GLGI::InputManager::KeyFuncType
+          ]
+c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(325): warning C4251: 'GLGI::Renderer::clearColor': struct 'glm::vec<4,float,0>' needs to have dll-interface to be used by clients of class 'GLGI::Renderer'
+  c:\users\kenny\source\repos\glgi\windows\glgi\glgi\include\glm\detail\type_vec.hpp(352): note: see declaration of 'glm::vec<4,float,0>'
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Window.cpp
+  Scene.cpp
+  ResourceManager.cpp
+  Renderer.cpp
+  PackedVertex.cpp
+  Object.cpp
+  Mesh.cpp
+  GLGI.cpp
