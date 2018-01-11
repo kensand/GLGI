@@ -90,3 +90,17 @@ GLGI::InputManager * GLGI::Window::detachInputManager()
 	return temp;
 
 }
+
+void GLGI::Window::setMouseState(int state)
+{
+	if (!((state == GLGI_CURSOR_HIDDEN) || (state == GLGI_CURSOR_NORMAL) || (state == GLGI_CURSOR_DISABLED))) {
+		throw("ERROR: Cursor state is invalid.");
+	}
+	else {
+		mouseState = glfwGetInputMode(glfwwindow, GLFW_CURSOR);
+		if (mouseState != state) {
+			mouseState = state;
+			glfwSetInputMode(glfwwindow, GLFW_CURSOR, mouseState);
+		}
+	}
+}

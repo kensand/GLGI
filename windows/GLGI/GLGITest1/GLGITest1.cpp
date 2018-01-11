@@ -17,6 +17,9 @@
 
 
 
+
+
+
 int main()
 {
 	GLGI::Window window;
@@ -35,19 +38,47 @@ int main()
 	cam->setPosition(0., 0., 0.);
 	cam->setRotation(0., 0., 0.);
 	suzanne->setPosition(-80., 0., -2.0);
+	
 	suzanne2->setPosition(0., 0., -1.0);
 	suzanne2->setMesh(new GLGI::Mesh("suzanne.obj"));
 	//suzanne2->setMesh(new GLGI::Mesh("triangle.obj"));
-	//suzanne2->setMesh(new GLGI::Mesh("square.obj"));
-	suzanne->setMesh(new GLGI::Mesh("cube.obj"));
-	rm->addResource(suzanne->getMesh());
+	suzanne->setMesh(new GLGI::Mesh("square.obj"));
+	//suzanne->setMesh(new GLGI::Mesh("cube.obj"));
+	
 	rm->addResource(suzanne2->getMesh());
-	//scene.addObject(suzanne);
+	rm->addResource(suzanne->getMesh());
+	scene.addObject(suzanne);
 	scene.addObject(suzanne2);
 	scene.addCamera(cam);
 	window.makeCurrentWindow();
 	
+	
 
+	/*GLGI::InputManager::KeyFuncType Forward_W = [](int key, int state, int mods) {
+		if (key == GLGI_KEY_W && state == GLGI_PRESS) {
+			glm::vec3 oldpos = cam->getPosition();
+			oldpos[2] -= speed *(currentTime - lastFrameTime);
+			cam->setPosition(oldpos);
+		}
+	}
+	*/
+	double rotSpeed = 0.001;
+	double moveSpeed = 0.001;
+	GLGI::CamMove cf = GLGI::CamMove(GLGI_KEY_W, cam, moveSpeed, GLGI::zAxis);
+	GLGI::CamMove cb = GLGI::CamMove(GLGI_KEY_S, cam, moveSpeed, glm::vec3(0,0,1));
+	GLGI::CamMove cl = GLGI::CamMove(GLGI_KEY_D, cam, moveSpeed, GLGI::xAxis);
+	GLGI::CamMove cr = GLGI::CamMove(GLGI_KEY_A, cam, moveSpeed, glm::vec3(-1, 0, 0));
+	GLGI::CamRotate rot(&window, cam, rotSpeed);
+	GLGI::MouseToggle mt(&window, GLGI_KEY_ESCAPE, window.getInputManager(), &rot, GLGI_CURSOR_DISABLED, GLGI_CURSOR_NORMAL);
+
+	GLGI::InputManager * im = window.getInputManager();
+	im->addKeyFunction(GLGI_KEY_W, &cf);
+	im->addKeyFunction(GLGI_KEY_S, &cb);
+	im->addKeyFunction(GLGI_KEY_D, &cl);
+	im->addKeyFunction(GLGI_KEY_A, &cr);
+	im->addMousePosFunction(&rot);
+	im->addKeyFunction(GLGI_KEY_ESCAPE, &mt);
+	
 
 	double speed = 0.5;
 	double mouseSpeed = 0.005;
@@ -62,33 +93,24 @@ int main()
 		nbFrames++;
 
 		renderer.render(&scene);
-
+		/*
 		glm::vec3 rot = cam->getRotation();
 		//printf("between 1 %f, %f, %f \n", rot.x, rot.y, rot.z);
 		rot.y = rot.y + mouseSpeed * (window.getMouseX() - lastMouseX);
 		rot.x = rot.x + mouseSpeed * (window.getMouseY() - lastMouseY);
 		//printf("between 2 %f, %f, %f \n", rot.x, rot.y, rot.z);
 		cam->setRotation(rot.x, rot.y, rot.z);
-		if (window.getKey(GLFW_KEY_W) == GLFW_PRESS) {
+		/*if (window.getKey(GLFW_KEY_W) == GLFW_PRESS) {
 			glm::vec3 oldpos = cam->getPosition();
 			oldpos[2] -= speed *(currentTime - lastFrameTime);
 			cam->setPosition(oldpos);
-		}
-		if (window.getKey(GLFW_KEY_A) == GLFW_PRESS) {
-			glm::vec3 oldpos = cam->getPosition();
-			oldpos[0] -= speed *(currentTime - lastFrameTime);
-			cam->setPosition(oldpos);
-		}
-		if (window.getKey(GLFW_KEY_S) == GLFW_PRESS) {
-			glm::vec3 oldpos = cam->getPosition();
-			oldpos[2] += speed *(currentTime - lastFrameTime);
-			cam->setPosition(oldpos);
-		}
-		if (window.getKey(GLFW_KEY_D) == GLFW_PRESS) {
-			glm::vec3 oldpos = cam->getPosition();
-			oldpos[0] += speed *(currentTime - lastFrameTime);
-			cam->setPosition(oldpos);
-		}
+		}*/
+		
+		cf.update();
+		cb.update();
+		cl.update();
+		cr.update();
+		
 		lastFrameTime = currentTime;
 		
 

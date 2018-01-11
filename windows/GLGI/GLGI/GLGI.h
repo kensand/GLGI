@@ -28,7 +28,7 @@
 
 
 #include "Defines.h"
-
+#include "Util.h"
 
 template <class T>
 void DBOUT( T s )            \
@@ -39,11 +39,10 @@ void DBOUT( T s )            \
 }
 
 
-
-
 namespace GLGI {
+	
 
-
+	
 
 
 	
@@ -95,12 +94,13 @@ namespace GLGI {
 		void setRotation(glm::vec3 axisRot);
 		void setScale(glm::vec3 scale);
 
-		
+		glm::vec3 getLookDirUnitVec();
 		glm::vec3 getRotation();
 		glm::vec3 getPosition();
 		glm::mat4 getViewMatrix();
 		glm::mat4 getPerspectiveMatrix();
 		glm::vec3 getScale();
+		glm::mat4 getRotationMatrix();
 		void update();
 
 
@@ -110,6 +110,8 @@ namespace GLGI {
 		glm::vec3 CameraLocation;
 		glm::vec3 CameraRotation;
 		glm::vec3 CameraScale;
+		glm::vec3 LookDirUnitVec;
+		
 
 	};
 
@@ -226,15 +228,30 @@ namespace GLGI {
 
 	class GLGI_API Window;
 
+	
+
 	class GLGI_API InputManager {
 	public:
+
+		virtual class GLGI_API BaseKeyInputClass {
+		public:
+			virtual void operator()(int key, int state, int mods) {};
+			virtual void update() {};
+		};
+
+		virtual class GLGI_API BaseMousePosClass {
+		public:
+			virtual void operator()(double x, double y) = 0;
+			virtual void update() = 0;
+		};
+
 		typedef int KeyType;
 		typedef int StateType;
 		typedef int MouseButtonType;
 		typedef int ModType;
 
-		typedef void(*KeyFuncType) (KeyType key, StateType state, ModType mods);
-		typedef void(*MousePosFuncType) (double xpos, double ypos);
+		typedef BaseKeyInputClass * KeyFuncType; //void(*KeyFuncType) (KeyType key, StateType state, ModType mods);
+		typedef BaseMousePosClass * MousePosFuncType;//void(*MousePosFuncType) (double xpos, double ypos);
 		typedef void(*MouseButtonFuncType) (MouseButtonType mouseButton, StateType mouseButtonState, ModType mods);
 
 		InputManager(Window * window);
@@ -242,14 +259,20 @@ namespace GLGI {
 
 		Window * detach();
 		Window * getCurrentWindow();
-		void * attach(Window * window);
+		void attach(Window * window);
 
-		void keyCallBack(GLFWwindow *, int, int, int);
+
+
+		void keyCallBack(GLFWwindow *, int, int, int, int);
 		void mousePosCallBack(GLFWwindow *, double, double);
 		void addKeyFunction(int key, KeyFuncType keyfunc);
 		void removeAllKeyFunctions(int key);
-		void addMouseFunction(MousePosFuncType);
+		void addMousePosFunction(MousePosFuncType fun);
 		void removeKeyFunction(KeyType, KeyFuncType);
+		bool hasMousePosFun(MousePosFuncType fun);
+		void removeMousePosFunction(MousePosFuncType fun);
+
+		
 
 	private:
 		Window * attachedWindow;
@@ -261,7 +284,12 @@ namespace GLGI {
 		std::vector<MouseButtonType> mouseButtons;
 		std::vector<MouseButtonFuncType> mouseButtonFunctions;
 
+
 	};
+
+	
+
+	
 
 
 	class GLGI_API Window {
@@ -272,7 +300,7 @@ namespace GLGI {
 		GLFWwindow* glfwwindow;
 		InputManager * input;
 		double mouseX, mouseY;
-
+		int mouseState;
 
 	public:
 		double getMouseX() {
@@ -308,6 +336,9 @@ namespace GLGI {
 		InputManager * getInputManager() { return input; }		// TODO: add your methods here.
 		InputManager * detachInputManager();
 		InputManager * attachInputManager(InputManager * newInputManager);
+		
+		int getMouseState() { return mouseState; }
+		void setMouseState(int state);
 
 	};
 
@@ -332,6 +363,113 @@ namespace GLGI {
 
 	
 	
+
+
+	/*example Input Manager Classes*/
+	class CamMove : public GLGI::InputManager::BaseKeyInputClass {
+	private:
+		double speed;
+		GLGI::Camera * cam;
+		bool pressed;
+		glm::vec3 dir;
+		GLGI::InputManager::KeyType k;
+	public:
+		void update() {
+			if (pressed) {
+				glm::vec3 pos = cam->getPosition();
+				glm::vec3 add = glm::vec3(glm::vec4(dir, 0) * cam->getRotationMatrix());
+				cam->setPosition(pos + add);
+			}
+		}
+		void operator()(int key, int state, int mods)  {
+			if (key == k && state == GLGI_PRESS) {
+				pressed = true;
+			}
+			else if (key == k && state == GLGI_RELEASE) {
+				pressed = false;
+			}
+		};
+		CamMove(GLGI::InputManager::KeyType triggerKey, GLGI::Camera * camera, double moveSpeed, glm::vec3 direction) {
+			cam = camera;
+			dir = direction;
+			speed = moveSpeed;
+			pressed = false;
+			k = triggerKey;
+		}
+	};
+
+	class MouseToggle : public GLGI::InputManager::BaseKeyInputClass {
+	private:
+		GLGI::InputManager::KeyType k;
+		GLGI::Window * win;
+		GLGI::InputManager * im;
+		GLGI::InputManager::BaseMousePosClass * f;
+		int on, off;
+		
+	public:
+		void update() {
+			
+		}
+		void operator()(int key, int state, int mods) {
+			if (key == k && state == GLGI_PRESS) {
+				
+			}
+			else if (key == k && state == GLGI_RELEASE) {
+				if (im->hasMousePosFun(f)) {
+					im->removeMousePosFunction(f);
+					if (win->getMouseState() != off) {
+						win->setMouseState(off);
+					}
+				}
+				else {
+					im->addMousePosFunction(f);
+					if (win->getMouseState() != on) {
+						win->setMouseState(on);
+					}
+				}
+
+			}
+		};
+		MouseToggle(GLGI::Window * w, GLGI::InputManager::KeyType triggerKey, GLGI::InputManager * inputManager, GLGI::InputManager::BaseMousePosClass * mousePos, int onState, int offState) {
+			im = inputManager;
+			on = onState;
+			off = offState;
+			f = mousePos;
+			win = w;
+			k = triggerKey;
+		}
+	};
+
+	class CamRotate : public GLGI::InputManager::BaseMousePosClass {
+	private:
+		double speed;
+		GLGI::Camera * cam;
+		GLGI::Window * win;
+		glm::vec3 dir;
+		double lastx, lasty;
+	public:
+		void update() {
+
+		}
+		void operator()(double xpos, double ypos) {
+			win->setMouseState(GLGI_CURSOR_DISABLED);
+
+			glm::vec3 newRot = cam->getRotation() + glm::vec3((ypos - lasty) * speed, (xpos - lastx) * speed, 0);
+			newRot[0] = fmod(newRot[0] + 90., 180) - 90;
+			cam->setRotation(newRot);
+			
+			lasty = ypos;
+			lastx = xpos;
+		};
+
+		CamRotate(GLGI::Window * window, GLGI::Camera * camera, double rotSpeed) {
+			cam = camera;
+			lastx = lasty = 0.;
+			speed = rotSpeed;
+			win = window;
+
+		}
+	};
 
 	// This class is exported from the GLGI.dll
 	

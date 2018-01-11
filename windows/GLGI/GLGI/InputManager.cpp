@@ -21,25 +21,27 @@ GLGI::Window * GLGI::InputManager::detach()
 	return temp;
 }
 
-void * GLGI::InputManager::attach(Window * window)
+void GLGI::InputManager::attach(Window * window)
 {
 	
 	glfwSetKeyCallback(window->glfwwindow, [](GLFWwindow * w, int i, int j, int k, int l) {
 		static_cast<GLGI::Window *>(glfwGetWindowUserPointer(w))->input->keyCallBack(w, i, j, k, l);
 	});
+
+	
+	glfwSetCursorPosCallback(window->glfwwindow, [](GLFWwindow * w, double i, double j) {
+		static_cast<GLGI::Window *>(glfwGetWindowUserPointer(w))->input->mousePosCallBack(w, i, j);
+	});/*
 	glfwSetKeyCallback(window->glfwwindow, [](GLFWwindow * w, int i, int j, int k, int l) {
 		static_cast<GLGI::Window *>(glfwGetWindowUserPointer(w))->input->keyCallBack(w, i, j, k, l);
-	});
-	glfwSetKeyCallback(window->glfwwindow, [](GLFWwindow * w, int i, int j, int k, int l) {
-		static_cast<GLGI::Window *>(glfwGetWindowUserPointer(w))->input->keyCallBack(w, i, j, k, l);
-	});
+	});*/
 }
 
 void GLGI::InputManager::keyCallBack(GLFWwindow * window, int button, int scancode, int action, int mods)
 {
 	for (int i = 0; i < keyFunctions.size(); i++) {
-		if (keys[i] == button) {
-			keyFunctions[i](button, action, mods);
+		if (keys[i] == button || keys[i] == GLGI_KEY_UNKNOWN) {
+			(*(keyFunctions[i]))(button, action, mods);
 		}
 	}
 }
@@ -48,7 +50,7 @@ void GLGI::InputManager::mousePosCallBack(GLFWwindow *, double x, double y)
 {
 
 	for (int i = 0; i < mousePosFunctions.size(); i++) {
-		mousePosFunctions[i](x,y);
+		(*(mousePosFunctions[i]))(x,y);
 	}
 
 }
@@ -70,12 +72,36 @@ void GLGI::InputManager::removeAllKeyFunctions(int key) {
 	}
 }
 
+void GLGI::InputManager::addMousePosFunction(MousePosFuncType fun)
+{
+	mousePosFunctions.push_back(fun);
+}
+
 void GLGI::InputManager::removeKeyFunction(KeyType key, KeyFuncType keyFunc)
 {
 	for (int i = 0; i < keys.size(); i++) {
 		if (keys[i] == key && keyFunc == keyFunctions[i]) {
 			keys.erase(keys.begin() + i);
 			keyFunctions.erase(keyFunctions.begin() + i);
+		}
+	}
+}
+
+bool GLGI::InputManager::hasMousePosFun(MousePosFuncType fun)
+{
+	for (uint i = 0; i < mousePosFunctions.size(); i++) {
+		if (fun == mousePosFunctions[i]) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void GLGI::InputManager::removeMousePosFunction(MousePosFuncType fun)
+{
+	for (uint i = 0; i < mousePosFunctions.size(); i++) {
+		if (fun == mousePosFunctions[i]) {
+			mousePosFunctions.erase(mousePosFunctions.begin() + i);
 		}
 	}
 }

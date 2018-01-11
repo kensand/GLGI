@@ -2,6 +2,18 @@
 #ifndef GLGI_DEFINES_H 
 #define GLGI_DEFINES_H GLGI_DEFINES_H
 
+#define uint unsigned int
+
+#define GLGI_CURSOR_NORMAL GLFW_CURSOR_NORMAL  
+
+#define GLGI_CURSOR_HIDDEN GLFW_CURSOR_HIDDEN  
+
+#define GLGI_CURSOR_DISABLED GLFW_CURSOR_DISABLED 
+
+#define GLGI_RELEASE  0
+#define GLGI_PRESS   1
+#define GLGI_REPEAT   2
+
 
 /* The unknown key */
 #define GLGI_KEY_UNKNOWN            -1
