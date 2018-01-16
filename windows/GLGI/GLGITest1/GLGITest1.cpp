@@ -37,18 +37,31 @@ int main()
 	GLGI::Camera * cam = new GLGI::Camera();
 	cam->setPosition(0., 0., 0.);
 	cam->setRotation(0., 0., 0.);
-	suzanne->setPosition(-80., 0., -2.0);
-	
-	suzanne2->setPosition(0., 0., -1.0);
-	suzanne2->setMesh(new GLGI::Mesh("suzanne.obj"));
+
+	GLGI::Mesh * mesh1 = new GLGI::Mesh("suzanne.obj", glm::vec4(0.f, 1.f, 0.f, 1.f));
+	GLGI::Mesh * mesh2 = new GLGI::Mesh("cube.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
+	rm->addResource(mesh1);
+	rm->addResource(mesh2);
+
+	for (int i = 0; i < 50; i++) {
+		GLGI::Object * obj = new GLGI::Object();
+		obj->setPosition(-100. + 4. *i, 0., -2.);
+		obj->setMesh(i % 2 == 0 ? mesh1 : mesh2);
+		scene.addObject(obj);
+	}
+
+	//suzanne->setPosition(-10., 0., -2.0);
+	//suzanne2->setPosition(0., 0., -1.0);
+	//suzanne2->setMesh(new GLGI::Mesh("suzanne.obj", glm::vec4(0.f, 1.f, 0.f, 1.f)));
 	//suzanne2->setMesh(new GLGI::Mesh("triangle.obj"));
-	suzanne->setMesh(new GLGI::Mesh("square.obj"));
+	//suzanne->setMesh(new GLGI::Mesh("cube.obj", glm::vec4(1.f, 0.f, 0.f, 1.f)));
 	//suzanne->setMesh(new GLGI::Mesh("cube.obj"));
+
+	//rm->addResource(suzanne->getMesh());
+	//rm->addResource(suzanne2->getMesh());
 	
-	rm->addResource(suzanne2->getMesh());
-	rm->addResource(suzanne->getMesh());
-	scene.addObject(suzanne);
-	scene.addObject(suzanne2);
+	//scene.addObject(suzanne);
+	//scene.addObject(suzanne2);
 	scene.addCamera(cam);
 	window.makeCurrentWindow();
 	
@@ -124,7 +137,6 @@ int main()
 		
 		if (currentTime - lastTime >= 1.0) { // If last prinf() was more than 1 sec ago
 											 // printf and reset timer
-			char buff[256];
 			printf("%f ms/frame\n", 1000.0 / double(nbFrames));
 			nbFrames = 0;
 			lastTime = currentTime;

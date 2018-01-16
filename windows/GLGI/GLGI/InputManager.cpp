@@ -39,7 +39,7 @@ void GLGI::InputManager::attach(Window * window)
 
 void GLGI::InputManager::keyCallBack(GLFWwindow * window, int button, int scancode, int action, int mods)
 {
-	for (int i = 0; i < keyFunctions.size(); i++) {
+	for (uint i = 0; i < keyFunctions.size(); i++) {
 		if (keys[i] == button || keys[i] == GLGI_KEY_UNKNOWN) {
 			(*(keyFunctions[i]))(button, action, mods);
 		}
@@ -49,7 +49,7 @@ void GLGI::InputManager::keyCallBack(GLFWwindow * window, int button, int scanco
 void GLGI::InputManager::mousePosCallBack(GLFWwindow *, double x, double y)
 {
 
-	for (int i = 0; i < mousePosFunctions.size(); i++) {
+	for (uint i = 0; i < mousePosFunctions.size(); i++) {
 		(*(mousePosFunctions[i]))(x,y);
 	}
 
@@ -64,7 +64,7 @@ void GLGI::InputManager::addKeyFunction(int key, KeyFuncType keyfunc)
 }
 
 void GLGI::InputManager::removeAllKeyFunctions(int key) {
-	for (int i = 0; i < keys.size(); i++) {
+	for (uint i = 0; i < keys.size(); i++) {
 		if (keys[i] == key) {
 			keys.erase(keys.begin() + i);
 			keyFunctions.erase(keyFunctions.begin() + i);
@@ -79,7 +79,7 @@ void GLGI::InputManager::addMousePosFunction(MousePosFuncType fun)
 
 void GLGI::InputManager::removeKeyFunction(KeyType key, KeyFuncType keyFunc)
 {
-	for (int i = 0; i < keys.size(); i++) {
+	for (uint i = 0; i < keys.size(); i++) {
 		if (keys[i] == key && keyFunc == keyFunctions[i]) {
 			keys.erase(keys.begin() + i);
 			keyFunctions.erase(keyFunctions.begin() + i);

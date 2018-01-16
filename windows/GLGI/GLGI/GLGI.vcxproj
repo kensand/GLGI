@@ -72,9 +72,11 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)Build</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(ProjectDir)Build</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -97,6 +99,18 @@
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>lib;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)dll\glfw3.dll $(OutputPath)glfw3.dll 
+copy $(ProjectDir)dll\Win32\glew32.dll $(OutputPath)glew32.dll 
+xcopy  $(ProjectDir)include $(OutputPath)include /E /I
+xcopy  $(ProjectDir)lib $(OutputPath)lib /E /I
+xcopy  $(ProjectDir)resources $(OutputPath)resources /E /I
+xcopy  $(ProjectDir)dll $(OutputPath)dll /E /I</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rd $(ProjectDir)Build /S /Q
+mkdir $(ProjectDir)Build</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -113,6 +127,18 @@
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glfw3dll.lib;glew32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>lib;</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)dll\glfw3.dll $(OutputPath)glfw3.dll 
+copy $(ProjectDir)dll\Win32\glew32.dll $(OutputPath)glew32.dll 
+xcopy  $(ProjectDir)include $(OutputPath)include /E /I
+xcopy  $(ProjectDir)lib $(OutputPath)lib /E /I
+xcopy  $(ProjectDir)resources $(OutputPath)resources /E /I
+xcopy  $(ProjectDir)dll $(OutputPath)dll /E /I</Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>rd $(ProjectDir)Build /S /Q
+mkdir $(ProjectDir)Build</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -190,6 +216,13 @@
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="vboindexer.cpp" />
     <ClCompile Include="Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="dll\glfw3.dll">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</DeploymentContent>
+      <FileType>Document</FileType>
+    </Media>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

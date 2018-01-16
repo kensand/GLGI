@@ -70,7 +70,7 @@ GLGI::ResourceManager::ResourceManager() {
 	glBindVertexArray(vaos);
 	glGenBuffers(1, &(vbos[0]));
 
-	for (int i = 0; i < numResourceTypes; i++) {
+	for (uint i = 0; i < numResourceTypes; i++) {
 
 		glBindBuffer(GL_ARRAY_BUFFER, vbos[i]);
 
@@ -85,10 +85,9 @@ GLGI::ResourceId GLGI::ResourceManager::addResource(Mesh * mesh)
 	//lastID += 1;
 	meshStarts.push_back(vertices.size());
 	meshes.push_back(mesh);
-	for (int i = 0; i < meshes.size(); i++) {
-		for (int j = 0; j < meshes[i]->size(); j++) {
-			vertices.push_back((*meshes[i])[j]);
-		}
+	
+	for (uint j = 0; j < mesh->size(); j++) {
+			vertices.push_back((*mesh)[j]);
 	}
 
 	//TODO this is inefficient to update each time a resource is added
@@ -119,6 +118,7 @@ void GLGI::ResourceManager::disableBuffers() {
 
 	glDisableVertexAttribArray(positions);
 	glDisableVertexAttribArray(normals);
+	glDisableVertexAttribArray(colors);
 	glDisableVertexAttribArray(uvs);
 
 }
@@ -130,7 +130,7 @@ void GLGI::ResourceManager::enableBuffers()
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[0]);
 	glEnableVertexAttribArray(positions);
 	glEnableVertexAttribArray(normals);
-	
+	glEnableVertexAttribArray(colors);
 	glEnableVertexAttribArray(uvs);
 	//glEnableVertexAttribArray(vaos);
 	/*
@@ -154,8 +154,10 @@ void GLGI::ResourceManager::enableBuffers()
 	pointer: size of uv + size of position - start after other 2 attributes
 	*/
 	glVertexAttribPointer(normals, 3, GL_FLOAT, GL_FALSE, sizeof(PackedVertex), (const void *)sizeof(glm::vec3));
+
 	//glEnableVertexAttribArray(normals);
 
+	glVertexAttribPointer(colors, 4, GL_FLOAT, GL_FALSE, sizeof(PackedVertex), (const void *)(2 * sizeof(glm::vec3)));
 	/*
 	uvs vertex attribute:
 	index: positions enum
@@ -165,7 +167,7 @@ void GLGI::ResourceManager::enableBuffers()
 	stride: size of position + size of normal
 	pointer: sizeof(vec3) - start after the first position vector
 	*/
-	glVertexAttribPointer(uvs, 2, GL_FLOAT, GL_FALSE, sizeof(PackedVertex), (const void *) (2 * sizeof(glm::vec3)));
+	glVertexAttribPointer(uvs, 2, GL_FLOAT, GL_FALSE, sizeof(PackedVertex), (const void *) (sizeof(glm::vec4) + 2 * sizeof(glm::vec3)));
 	//glEnableVertexAttribArray(uvs);
 	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(meshes), &(meshes[0]), GL_STATIC_DRAW);
 }

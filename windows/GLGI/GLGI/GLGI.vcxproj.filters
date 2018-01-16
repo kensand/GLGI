@@ -96,4 +96,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="dll\glfw3.dll">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

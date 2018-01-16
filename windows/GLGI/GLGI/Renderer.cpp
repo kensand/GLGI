@@ -16,7 +16,9 @@ void GLGI::Renderer::render(Scene * scene)
 	scene->update();
 	manager->update();//TODO necessary?
 
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_DEPTH_TEST);
+
 	//glDisable(GL_DEPTH_TEST);
 	glm::vec4 black = glm::vec4(0.f, 0.f, 1.f, 1.f);
 	glClearBufferfv(GL_COLOR, 0, &(black[0]));
@@ -24,13 +26,13 @@ void GLGI::Renderer::render(Scene * scene)
 	//float temp = clearColor[1];
 	//clearColor[1] = clearColor[0];
 	//clearColor[0] = temp;
-	//glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_DEPTH_BUFFER_BIT);
 
 	// Activate simple shading program
 	glUseProgram(programID);
 
 	// Set up for a glDrawElements call
-	glBindVertexArray(manager->vaos);
+	//glBindVertexArray(manager->vaos);
 
 	manager->enableBuffers();
 

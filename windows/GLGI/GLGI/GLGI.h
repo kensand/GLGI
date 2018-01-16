@@ -54,15 +54,16 @@ namespace GLGI {
 	struct GLGI_API PackedVertex {
 		glm::vec3 position;
 		glm::vec3 normal;
+		glm::vec4 color;
 		glm::vec2 uv;
-		PackedVertex(glm::vec3 Position, glm::vec2 UV, glm::vec3 Normal);
+		PackedVertex(glm::vec3 Position, glm::vec2 UV, glm::vec3 Normal, glm::vec4 Color = glm::vec4(0.f, 0.f, 0.f, 1.f));
 		PackedVertex(const PackedVertex & copy);
 		bool operator<(const PackedVertex that) const;
 	};
 
 	struct GLGI_API Mesh {
 		std::vector<PackedVertex> vertices;
-		Mesh(const char * path);
+		Mesh(const char * path, glm::vec4 color=glm::vec4(0.f, 0.f, 0.f, 0.f));
 		
 		PackedVertex operator[](unsigned int i) { return vertices[i]; };
 		size_t size() { return vertices.size(); };
@@ -211,7 +212,7 @@ namespace GLGI {
 
 		
 	public:
-		enum vertexAttributes {positions = 0, normals, uvs};
+		enum vertexAttributes {positions = 0, normals, colors, uvs};
 		ResourceManager();
 		~ResourceManager();
 		ResourceId addResource(Mesh * mesh);
@@ -454,8 +455,8 @@ namespace GLGI {
 		void operator()(double xpos, double ypos) {
 			win->setMouseState(GLGI_CURSOR_DISABLED);
 
-			glm::vec3 newRot = cam->getRotation() + glm::vec3((ypos - lasty) * speed, (xpos - lastx) * speed, 0);
-			newRot[0] = fmod(newRot[0] + 90., 180) - 90;
+			glm::vec3 newRot = cam->getRotation() + glm::vec3((ypos - lasty) * speed, (xpos - lastx) * speed, 0.);
+			newRot[0] = fmod(newRot[0] + 90.f, 180) - 90.f;
 			cam->setRotation(newRot);
 			
 			lasty = ypos;
