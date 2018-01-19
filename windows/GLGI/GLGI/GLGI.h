@@ -10,6 +10,8 @@
 #define GLGI_API __declspec(dllimport)
 #endif
 
+
+
 #include <map>
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
@@ -18,6 +20,7 @@
 #include <common\objloader.hpp>
 #include <common\shader.hpp>
 
+#include <tinyobjloader\tiny_obj_loader.h>
 
 #define GLM_ENABLE_EXPERIMENTAL 1
 #include <glm\gtx\transform.hpp>
@@ -81,8 +84,10 @@ namespace GLGI {
 	
 
 	class GLGI_API Camera {
+		friend class Scene;
 	public:
 		Camera();
+		void update();
 		void setPosition(GLfloat x, GLfloat y, GLfloat z);
 
 
@@ -102,10 +107,11 @@ namespace GLGI {
 		glm::mat4 getPerspectiveMatrix();
 		glm::vec3 getScale();
 		glm::mat4 getRotationMatrix();
-		void update();
+		
 
 
 	private:
+		
 		glm::mat4 PerspectiveMatrix;
 		glm::mat4 ViewMatrix;
 		glm::vec3 CameraLocation;
@@ -113,12 +119,12 @@ namespace GLGI {
 		glm::vec3 CameraScale;
 		glm::vec3 LookDirUnitVec;
 		
-
 	};
 
 
 
 	class GLGI_API Object {
+		friend class Scene;
 	public:
 		Object();
 		template <typename T>
@@ -184,8 +190,11 @@ namespace GLGI {
 		friend class Renderer;
 	public:
 		Scene();
+		Object * createObject(const char * wavefront_obj);
+		void destroyObject(Object*);
 		void addObject(Object * o);
 		void addCamera(Camera * c);
+		Camera * createCamera();
 		void update();
 	private:
 		Camera * currentCamera;

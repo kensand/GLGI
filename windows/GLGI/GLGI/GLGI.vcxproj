@@ -214,6 +214,7 @@ mkdir $(ProjectDir)Build</Command>
     <ClCompile Include="tangentspace.cpp" />
     <ClCompile Include="text2D.cpp" />
     <ClCompile Include="texture.cpp" />
+    <ClCompile Include="Tiny_obj_loader.cpp" />
     <ClCompile Include="vboindexer.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

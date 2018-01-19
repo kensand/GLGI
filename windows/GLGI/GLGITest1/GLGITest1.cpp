@@ -3,7 +3,10 @@
 
 #include "stdafx.h"
 #include <Windows.h>
+
+
 #include "../GLGI/GLGI.h"
+
 
 
 #include <sstream>
@@ -37,6 +40,9 @@ int main()
 	GLGI::Camera * cam = new GLGI::Camera();
 	cam->setPosition(0., 0., 0.);
 	cam->setRotation(0., 0., 0.);
+
+
+	
 
 	GLGI::Mesh * mesh1 = new GLGI::Mesh("suzanne.obj", glm::vec4(0.f, 1.f, 0.f, 1.f));
 	GLGI::Mesh * mesh2 = new GLGI::Mesh("cube.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));

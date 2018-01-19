@@ -5,8 +5,6 @@
 #include "GLGI.h"
 
 
-
-
 // This is an example of an exported variable
 GLGI_API int nGLGI=0;
 
