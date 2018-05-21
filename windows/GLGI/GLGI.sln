@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLGI", "GLGI\GLGI.vcxproj", "{B37C6F34-26F6-4BA2-902A-A3F0F7482C42}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLGI", "GLGI_64\GLGI.vcxproj", "{B37C6F34-26F6-4BA2-902A-A3F0F7482C42}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLGITest1", "GLGITest1\GLGITest1.vcxproj", "{E168F7C8-BA02-4EB0-A8BA-3CFB13C36984}"
 EndProject

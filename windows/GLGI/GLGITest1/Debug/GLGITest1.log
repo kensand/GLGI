@@ -1,4 +1,5 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(373,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(377,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+  stdafx.cpp
   GLGITest1.cpp
 c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): warning C4473: 'fscanf_s' : not enough arguments passed for format string
   c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\common\objloader.cpp(46): note: placeholders and their parameters expect 2 variadic arguments, but 1 were provided
@@ -150,7 +151,6 @@ c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(366): warning C4251: '
   c:\users\kenny\source\repos\glgi\windows\glgi\glgitest1\include\glm\detail\type_vec.hpp(352): note: see declaration of 'glm::vec<4,float,0>'
 c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(468): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   GLGITest1.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGITest1\Build\GLGITest1.exe
-  GLGITest1.vcxproj -> C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGITest1\Build\GLGITest1.pdb (Partial PDB)
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\glew32.dll
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\glfw3.dll
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\GLGI.dll
@@ -160,13 +160,9 @@ c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(468): warning C4244: '
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\GLGI.pdb
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\glfw3.dll
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\Win32\glew32.dll
-  C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\Win32\glewinfo.exe
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\Win32\glewinfo.txt
-  C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\Win32\visualinfo.exe
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\Win32\visualinfo.txt
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\x64\glew32.dll
-  C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\x64\glewinfo.exe
-  C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\dll\x64\visualinfo.exe
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\include\common\controls.hpp
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\include\common\objloader.hpp
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\include\common\quaternion_utils.hpp
@@ -452,4 +448,4 @@ c:\users\kenny\source\repos\glgi\windows\glgi\glgi\glgi.h(468): warning C4244: '
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\resources\triangle.obj
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\resources\triangles.frag
   C:\Users\Kenny\source\repos\GLGI\windows\GLGI\GLGI\build\resources\triangles.vert
-  301 File(s) copied
+  297 File(s) copied

@@ -5,7 +5,7 @@
 #include <Windows.h>
 
 
-#include "../GLGI/GLGI.h"
+#include "../GLGI_64/GLGI.h"
 
 
 
