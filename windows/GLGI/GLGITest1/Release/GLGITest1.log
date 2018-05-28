@@ -1,4 +1,0 @@
-﻿  stdafx.cpp
-  GLGITest1.cpp
-GLGITest1.obj : error LNK2001: unresolved external symbol _glfwInit
-C:\Users\Kenny\source\repos\GLGI\windows\GLGI\Release\GLGITest1.exe : fatal error LNK1120: 1 unresolved externals

@@ -77,7 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)Build</OutDir>
+    <OutDir>$(ProjectDir)Build\x64\</OutDir>
+    <IntDir>$(ProjectDir)Build\Intermediate\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -129,17 +130,14 @@ mkdir $(ProjectDir)Build</Command>
       <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)glfw3.dll $(OutputPath)glfw3.dll 
-copy $(ProjectDir)glew32.dll $(OutputPath)glew32.dll
-copy $(ProjectDir)GLGI.h $(OutputPath)GLGI.h
-xcopy  $(ProjectDir)include $(OutputPath)include /E /I
+      <Command>xcopy  $(ProjectDir)include $(OutputPath)include /E /I
+copy $(ProjectDir)GLGI.h $(OutputPath)include\GLGI.h
 xcopy  $(ProjectDir)lib $(OutputPath)lib /E /I
 xcopy  $(ProjectDir)resources $(OutputPath)resources /E /I 
-xcopy  $(ProjectDir)dll $(OutputPath)dll /E /I</Command>
+xcopy  $(ProjectDir)dll\$(Platform) $(OutputPath)dll /E /I</Command>
     </PostBuildEvent>
     <PreBuildEvent>
-      <Command>rd $(ProjectDir)Build /S /Q
-mkdir $(ProjectDir)Build</Command>
+      <Command>rmdir $(OutputPath) /s /q</Command>
     </PreBuildEvent>
     <ProjectReference>
       <LinkLibraryDependencies>false</LinkLibraryDependencies>
@@ -194,7 +192,6 @@ mkdir $(ProjectDir)Build</Command>
     <ClInclude Include="include\common\CImg.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
@@ -219,7 +216,6 @@ mkdir $(ProjectDir)Build</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="tangentspace.cpp" />
-    <ClCompile Include="text2D.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="Tiny_obj_loader.cpp" />
     <ClCompile Include="vboindexer.cpp" />
