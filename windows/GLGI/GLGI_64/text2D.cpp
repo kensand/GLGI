@@ -21,7 +21,7 @@ unsigned int Text2DUVBufferID;
 unsigned int Text2DShaderID;
 unsigned int Text2DUniformID;
 
-void initText2D(const char * texturePath){
+/*void initText2D(const char * texturePath){
 
 	// Initialize texture
 	Text2DTextureID = loadDDS(texturePath);
@@ -37,7 +37,7 @@ void initText2D(const char * texturePath){
 	Text2DUniformID = glGetUniformLocation( Text2DShaderID, "myTextureSampler" );
 
 }
-
+*/
 void printText2D(const char * text, int x, int y, int size){
 
 	unsigned int length = strlen(text);

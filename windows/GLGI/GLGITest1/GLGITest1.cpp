@@ -3,10 +3,15 @@
 
 #include "stdafx.h"
 #include <Windows.h>
-
-
 #include "../GLGI_64/GLGI.h"
 
+
+#define DEBUG DEBUG
+#ifdef DEBUG
+#define _CRTDBG_MAP_ALLOC true
+#include <stdlib.h>
+#include <crtdbg.h>
+#endif // DEBUG
 
 
 #include <sstream>
@@ -25,6 +30,11 @@
 
 int main()
 {
+
+#ifdef DEBUG
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
+
 	GLGI::Window window;
 	GLGI::ResourceManager * rm = new GLGI::ResourceManager();
 	GLGI::Renderer renderer(rm, &window);
@@ -35,8 +45,8 @@ int main()
 	printf("vec2size = %d\n", sizeof(glm::vec2));
 	printf("GLfloatsize = %d\n", sizeof(GL_FLOAT));
 
-	GLGI::Object * suzanne = new GLGI::Object();
-	GLGI::Object * suzanne2 = new GLGI::Object();
+	//GLGI::Object * suzanne = new GLGI::Object();
+	//GLGI::Object * suzanne2 = new GLGI::Object();
 	GLGI::Camera * cam = new GLGI::Camera();
 	cam->setPosition(0., 0., 0.);
 	cam->setRotation(0., 0., 0.);
@@ -44,17 +54,37 @@ int main()
 
 	
 
-	GLGI::Mesh * mesh1 = new GLGI::Mesh("suzanne.obj", glm::vec4(0.f, 1.f, 0.f, 1.f));
-	GLGI::Mesh * mesh2 = new GLGI::Mesh("cube.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
+	GLGI::Mesh * mesh1 = new GLGI::Mesh("suzanne.obj", glm::vec4(0.f, 1.f, 0.f, 0.f));
+	GLGI::Mesh * mesh2 = new GLGI::Mesh("cube2.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
+	//GLGI::Mesh * mesh1 = new GLGI::Mesh("capsule.obj", glm::vec4(0.f, 1.f, 0.f, 0.f));
+	//GLGI::Mesh * mesh2 = new GLGI::Mesh("capsule.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
+	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.png");
+	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.png");
+	GLGI::Texture * tex1 = new GLGI::Texture("suzanne.jpg");
+	GLGI::Texture * tex2 = new GLGI::Texture("cube2.jpg");
+
+	
+	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.jpg");
+	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.jpg");
+
+	//GLGI::Texture * tex1 = new GLGI::Texture("test1.jpg");
+
+	//GLGI::Texture * tex2 = new GLGI::Texture("test2.jpg");
 	rm->addResource(mesh1);
 	rm->addResource(mesh2);
+	rm->addResource(tex1);
+	rm->addResource(tex2);
 
 	for (int i = 0; i < 50; i++) {
 		GLGI::Object * obj = new GLGI::Object();
 		obj->setPosition(-100. + 4. *i, 0., -2.);
 		obj->setMesh(i % 2 == 0 ? mesh1 : mesh2);
+		//obj->setMesh(mesh2);
+		obj->setTexture(i % 2 == 0 ? tex1 : tex2);
 		scene.addObject(obj);
 	}
+
+	//rm->update();
 
 	//suzanne->setPosition(-10., 0., -2.0);
 	//suzanne2->setPosition(0., 0., -1.0);
@@ -107,6 +137,7 @@ int main()
 	double lastMouseX = window.getMouseX();
 	double lastMouseY = window.getMouseY();
 	/* Loop until the user closes the window */
+	rm->update();
 	while (!window.shouldClose()) {
 		double currentTime = window.getTime();
 		nbFrames++;
@@ -151,6 +182,18 @@ int main()
 
 	}
 	window.close();
+	
+	delete tex1;
+	delete tex2;
+	//delete suzanne;
+	//delete suzanne2;
+	delete cam;
+	for (uint i = 0; i < scene.objects.size(); i++) {
+		delete scene.objects[i];
+	}
+	delete mesh1;
+	delete mesh2;
+	delete rm;
 	
 	return 0;
 

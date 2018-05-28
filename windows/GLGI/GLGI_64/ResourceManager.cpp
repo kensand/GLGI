@@ -55,6 +55,7 @@ VertexToOutIndex[packed] = newindex;
 }
 
 */
+
 GLGI::ResourceManager::ResourceManager() {
 
 
@@ -69,6 +70,7 @@ GLGI::ResourceManager::ResourceManager() {
 	glGenVertexArrays(1, &vaos);
 	glBindVertexArray(vaos);
 	glGenBuffers(1, &(vbos[0]));
+	textureIdArr = NULL;
 
 	for (uint i = 0; i < numResourceTypes; i++) {
 
@@ -77,6 +79,8 @@ GLGI::ResourceManager::ResourceManager() {
 		//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebos[i]);
 
 	}
+	this->texdims2D[0] = 1024;
+	this->texdims2D[1] = 1024;
 
 }
 
@@ -91,7 +95,6 @@ GLGI::ResourceId GLGI::ResourceManager::addResource(Mesh * mesh)
 	}
 
 	//TODO this is inefficient to update each time a resource is added
-	this->update();
 	return meshStarts[meshStarts.size() - 1];
 	//return lastID;
 
@@ -102,19 +105,79 @@ GLGI::ResourceId GLGI::ResourceManager::addResource(Texture * texture)
 	//lastID += 1;
 	//textures.push_back(std::pair<ResourceId, Texture*>(lastID, texture));
 	//TODO this is inefficient to update each time a resource is added
-	this->update();
+	textures.push_back(texture);
+	
 	return 0;// lastID;
 }
 
 void GLGI::ResourceManager::update() {
+	GLint error;
 
 	glBindVertexArray(vaos);
 	glBindBuffer(GL_ARRAY_BUFFER, vbos[0]);
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(PackedVertex), &(vertices[0]), GL_STATIC_DRAW);
+	if (vertices.size() >= 0) {
+		glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(PackedVertex), &(vertices[0]), GL_STATIC_DRAW);
+	}
+	if (textureIdArr != NULL) {
+		glDeleteTextures(numTextures, textureIdArr);
+		delete[] textureIdArr;
+	}
+	numTextures = textures.size();
+	textureIdArr = new GLuint[numTextures];
 
+	glGenTextures(1, &textures2D);
+	glActiveTexture(GL_TEXTURE0);
+	if ((error = glGetError()) != GL_NO_ERROR) {
+		printf("OPENGL error: %d\n", error);
+		error = 0;
+	}
+	glBindTexture(GL_TEXTURE_2D_ARRAY, textures2D);
+	if ((error = glGetError()) != GL_NO_ERROR) {
+		printf("OPENGL error: %d\n", error);
+		error = 0;
+	}
+
+	glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_RGB8, texdims2D[0], texdims2D[1], numTextures);
+	if ((error = glGetError()) != GL_NO_ERROR) {
+		printf("OPENGL error: %d\n", error);
+		error = 0;
+	}
+	for (uint i = 0; i < textures.size(); i++) {
+		
+		
+		textureIdArr[i] = i;
+		if ((error = glGetError()) != GL_NO_ERROR) {
+			printf("OPENGL error: %d\n", error);
+			error = 0;
+		}
+		glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0,
+			0, 0, i, //x, y, z offsets)
+			texdims2D[0], texdims2D[1], 1, //x, y, z dimensions
+			GL_RGB, GL_UNSIGNED_BYTE, textures[i]->getDataLoc()
+		);
+		if ((error = glGetError()) != GL_NO_ERROR) {
+			printf("OPENGL error: %d\n", error);
+			error = 0;
+		}
+		
+	}
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	//glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D_ARRAY, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glGenerateMipmap(GL_TEXTURE_2D_ARRAY);
 }
 
 void GLGI::ResourceManager::disableBuffers() {
+
+
+
 
 	glDisableVertexAttribArray(positions);
 	glDisableVertexAttribArray(normals);
@@ -122,6 +185,9 @@ void GLGI::ResourceManager::disableBuffers() {
 	glDisableVertexAttribArray(uvs);
 
 }
+
+
+
 
 void GLGI::ResourceManager::enableBuffers()
 {
@@ -176,6 +242,11 @@ GLGI::ResourceManager::~ResourceManager() {
 
 	glDeleteBuffers(numResourceTypes, vbos);
 	//glDeleteBuffers(numResourceTypes, ebos);
+	
+	if (textureIdArr != NULL) {
+		glDeleteTextures(1, &textures2D);
+		delete[] textureIdArr;
+	}
 
 }
 
@@ -187,5 +258,27 @@ GLuint GLGI::ResourceManager::getMeshStart(Mesh * mesh)
 			return meshStarts[i];
 		}
 	}
+	return 0;//TODO this should throw
+}
+
+GLuint GLGI::ResourceManager::getTextureUnitId(GLGI::Texture * texture) {
+	/*for (unsigned int i = 0; i < textures.size(); i++) {
+		if (texture == textures[i]) {
+			return textureUnitIds[i];
+		}
+	}
+	throw("Texture id not found");
+	return 0;
+	*/
+	return 0; //TODO this should i where i is GL_TEXTUREi refering to which texture unit(?) is being used.
+}
+
+GLuint GLGI::ResourceManager::getTextureId(GLGI::Texture * texture) {
+	for (unsigned int i = 0; i < textures.size(); i++) {
+		if (texture == textures[i]) {
+			return textureIdArr[i];
+		}
+	}
+	throw("Texture uid not found");
 	return 0;//TODO this should throw
 }

@@ -75,9 +75,16 @@ namespace GLGI {
 
 	class GLGI_API Texture {
 	public:
-		Texture();
+		Texture(const char * path);
+		~Texture();
+		//std::vector <unsigned char> data;
+		
+		unsigned int imageSize;
+		unsigned int width, height, channels;
+		const unsigned char * getDataLoc() { return (const unsigned char *) data; }
 	private:
-
+		unsigned char * data;
+		const char * imagepath;
 	};
 
 	
@@ -172,6 +179,9 @@ namespace GLGI {
 		Mesh * getMesh() { return mesh; };
 		void setMesh(Mesh * m) { mesh = m; };
 
+		Texture * getTexture() { return texture; };
+		void setTexture(Texture * t) { texture = t; };
+
 
 	private:
 		Texture * texture;
@@ -196,10 +206,11 @@ namespace GLGI {
 		void addCamera(Camera * c);
 		Camera * createCamera();
 		void update();
-	private:
 		Camera * currentCamera;
 		std::vector<Object *> objects;
 		std::vector<Camera *> cameras;
+	private:
+		
 	};
 
 	
@@ -213,11 +224,17 @@ namespace GLGI {
 		std::vector <Mesh *> meshes;
 		std::vector <size_t> meshStarts;
 		std::vector <PackedVertex> vertices;
+		std::vector <Texture *> textures;
+		std::vector <GLint> textureUnitIds;
 		static const int numResourceTypes = 2;
+		int numTextures;
 		GLuint vaos;
 		GLuint vbos[numResourceTypes];
 		GLuint ebos[numResourceTypes];
+		GLuint * textureIdArr;
 
+		GLuint textures2D;
+		GLuint texdims2D[2];
 
 		
 	public:
@@ -230,6 +247,8 @@ namespace GLGI {
 		void enableBuffers();
 		void disableBuffers();
 		GLuint getMeshStart(Mesh * mesh);
+		GLuint getTextureUnitId(Texture * texture);
+		GLuint getTextureId(Texture * texture);
 
 
 		
@@ -325,7 +344,8 @@ namespace GLGI {
 
 		static void GLGI::Window::cursorPosCallBack(GLFWwindow* window, double xpos, double ypos);
 		static Window * currentWindow;
-		Window(void);
+		Window();
+		~Window();
 		double getTime() { return glfwGetTime(); }
 		void makeCurrentWindow() {
 			currentWindow = this;
@@ -362,7 +382,9 @@ namespace GLGI {
 		GLuint programID;
 		Window * renderWindow;
 		ResourceManager * manager;
-		GLuint mvpUniform;
+		GLint mvpUniform;
+		GLint texUniform;
+		GLint texIDUniform;
 		glm::vec4 clearColor;
 
 	};

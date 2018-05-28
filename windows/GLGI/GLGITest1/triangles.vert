@@ -9,12 +9,14 @@ layout( location = 3 ) in vec2 vTex;
 out vec4 Color;
 out vec2 Tex;
 
-
 uniform mat4 mvpMatrix;
+uniform sampler2DArray textureData;
+uniform int textureID;
 
 void
 main()
 {
 	gl_Position = mvpMatrix * vec4(vPosition, 1.0);
 	Color = vColor;
+	Tex = vTex;
 }

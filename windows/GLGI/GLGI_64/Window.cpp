@@ -44,6 +44,9 @@ GLGI::Window::Window()
 
 }
 
+GLGI::Window::~Window() {
+	delete input;
+}
 
 
 bool GLGI::Window::shouldClose() {

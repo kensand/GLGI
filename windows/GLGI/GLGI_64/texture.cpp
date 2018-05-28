@@ -7,7 +7,74 @@
 
 #include <GLFW/glfw3.h>
 #include <common/texture.hpp>
+#include "GLGI.h"
+#include <common/CImg.h>
 
+
+
+GLGI::Texture::Texture(const char * path){
+	this->imagepath = path;
+	cimg_library::CImg<unsigned char> tim;
+	try {
+		tim = cimg_library::CImg<unsigned char>(path);
+	}
+	catch (cimg_library::CImgIOException e) {
+		printf("%s", e.what());
+		exit(-1);
+	}
+
+	this->data = new unsigned char[tim.size()];
+	this->imageSize = tim.size();
+	width = tim.width();
+	height = tim.height();
+	channels = tim.spectrum();
+
+	//tim.display();
+	
+	
+	for (uint x = 0; x < width; x++) {
+		for (uint y = 0; y < height; y++) {
+			for (uint c = 0; c < channels; c++) {
+				//this->data[width * height * channels - 1 - (x * channels * height + y * channels + c)] = tim(x, y, 0, c);
+				//this->data[(x * channels * height + y * channels + c)] = tim(x, y, 0, c);
+				this->data[(x * channels + y * channels * width + c)] = tim(x, y, 0, c);
+			}
+		}
+	}
+	
+
+	//memcpy_s(this->data, tim.size(), tim.data(), tim.size());
+	
+
+	
+	/*width = 2;
+	height = 2;
+	channels = 3;
+	this->data = new unsigned char[width * height * channels];
+	this->data[0] = 255;
+	this->data[1] = 0;
+	this->data[2] = 0;
+
+	this->data[3] = 0;
+	this->data[4] = 0;
+	this->data[5] = 0;
+
+	this->data[6] = 0;
+	this->data[7] = 0;
+	this->data[8] = 0;
+
+	this->data[9] = 0;
+	this->data[10] = 0;
+	this->data[11] = 0;
+	*/
+	
+}
+
+GLGI::Texture::~Texture() {
+	delete[] data;
+}
+
+/*
 
 GLuint loadBMP_custom(const char * imagepath){
 
@@ -90,7 +157,7 @@ GLuint loadBMP_custom(const char * imagepath){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 	// ... which requires mipmaps. Generate them automatically.
-	glGenerateMipmap(GL_TEXTURE_2D);
+	
 
 	// Return the ID of the texture we just created
 	return textureID;
@@ -133,14 +200,12 @@ GLuint loadDDS(const char * imagepath){
 
 	FILE *fp; 
  
-	/* try to open the file */ 
 	fopen_s(&fp, imagepath, "rb"); 
 	if (fp == NULL){
 		printf("%s could not be opened. Are you in the right directory ? Don't forget to read the FAQ !\n", imagepath); getchar(); 
 		return 0;
 	}
    
-	/* verify the type of file */ 
 	char filecode[4]; 
 	fread(filecode, 1, 4, fp); 
 	if (strncmp(filecode, "DDS ", 4) != 0) { 
@@ -148,7 +213,6 @@ GLuint loadDDS(const char * imagepath){
 		return 0; 
 	}
 	
-	/* get the surface desc */ 
 	fread(&header, 124, 1, fp); 
 
 	unsigned int height      = *(unsigned int*)&(header[8 ]);
@@ -160,11 +224,9 @@ GLuint loadDDS(const char * imagepath){
  
 	unsigned char * buffer;
 	unsigned int bufsize;
-	/* how big is it going to be including all mipmaps? */ 
 	bufsize = mipMapCount > 1 ? linearSize * 2 : linearSize; 
 	buffer = (unsigned char*)malloc(bufsize * sizeof(unsigned char)); 
 	fread(buffer, 1, bufsize, fp); 
-	/* close the file pointer */ 
 	fclose(fp);
 
 	unsigned int components  = (fourCC == FOURCC_DXT1) ? 3 : 4; 
@@ -195,8 +257,7 @@ GLuint loadDDS(const char * imagepath){
 	
 	unsigned int blockSize = (format == GL_COMPRESSED_RGBA_S3TC_DXT1_EXT) ? 8 : 16; 
 	unsigned int offset = 0;
-
-	/* load the mipmaps */ 
+ 
 	for (unsigned int level = 0; level < mipMapCount && (width || height); ++level) 
 	{ 
 		unsigned int size = ((width+3)/4)*((height+3)/4)*blockSize; 
@@ -218,4 +279,4 @@ GLuint loadDDS(const char * imagepath){
 	return textureID;
 
 
-}
+}*/
