@@ -130,11 +130,13 @@ mkdir $(ProjectDir)Build</Command>
       <AdditionalLibraryDirectories>$(ProjectDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy  $(ProjectDir)include $(OutputPath)include /E /I
+      <Command>xcopy  $(ProjectDir)include $(OutputPath)include /E /I /S /Y
 copy $(ProjectDir)GLGI.h $(OutputPath)include\GLGI.h
-xcopy  $(ProjectDir)lib $(OutputPath)lib /E /I
-xcopy  $(ProjectDir)resources $(OutputPath)resources /E /I 
-xcopy  $(ProjectDir)dll\$(Platform) $(OutputPath)dll /E /I</Command>
+xcopy  $(ProjectDir)lib $(OutputPath)lib /E /I /S /Y
+xcopy  $(ProjectDir)resources $(OutputPath)resources /E /I /S /Y
+xcopy  $(ProjectDir)dll\$(Platform) $(OutputPath)dll /E /I /S /Y
+mv $(OutputPath)\GLGI_64.dll $(OutputPath)dll\GLGI_64.dll
+mv $(OutputPath)\GLGI_64.lib $(OutputPath)lib\GLGI_64.lib</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>rmdir $(OutputPath) /s /q</Command>
@@ -187,7 +189,7 @@ xcopy  $(ProjectDir)dll\$(Platform) $(OutputPath)dll /E /I</Command>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Defines.h" />
+    <ClInclude Include="include\Defines.h" />
     <ClInclude Include="GLGI.h" />
     <ClInclude Include="include\common\CImg.h" />
     <ClInclude Include="stdafx.h" />

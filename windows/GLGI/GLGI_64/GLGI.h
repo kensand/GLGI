@@ -374,7 +374,7 @@ namespace GLGI {
 
 	class GLGI_API Renderer {
 	public:
-		Renderer(ResourceManager * resourceManager, Window * window);
+		Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath);
 		void render(Scene * scene);
 		
 

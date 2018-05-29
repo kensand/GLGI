@@ -27,10 +27,10 @@
     <ClInclude Include="GLGI.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Defines.h">
+    <ClInclude Include="include\common\CImg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\common\CImg.h">
+    <ClInclude Include="include\Defines.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

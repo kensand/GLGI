@@ -20,6 +20,4 @@ bool loadAssImp(
 	std::vector<glm::vec3> & normals
 );
 
-#include "objloader.cpp"
-
 #endif

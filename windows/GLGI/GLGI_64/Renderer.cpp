@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "GLGI.h"
 
-GLGI::Renderer::Renderer(ResourceManager * resourceManager, Window * window)
+GLGI::Renderer::Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath)
 {
 	//programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
-	programID = LoadShaders("triangles.vert", "triangles.frag");
+	programID = LoadShaders(vertexshaderpath, fragmentshaderpath);
 	mvpUniform = glGetUniformLocation(programID, "mvpMatrix");
 	if (mvpUniform < 0) {
 		printf("GL shader ERROR: mvpMATRIX uniform not found");
