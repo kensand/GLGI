@@ -38,6 +38,10 @@ GLGI::Object::Object() {
 	ModelScale = glm::vec3(1., 1., 1.);
 	ModelRotation = glm::vec3(0., 0., 0.);
 	this->update();
+	ignoreLights = false;
+	mesh = NULL;
+	texture = NULL;
+	material = NULL;
 
 }
 

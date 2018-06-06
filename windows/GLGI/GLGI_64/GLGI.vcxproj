@@ -201,7 +201,9 @@ mv $(OutputPath)\GLGI_64.lib $(OutputPath)lib\GLGI_64.lib</Command>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="GLGI.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="lodepng.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="objloader.cpp" />

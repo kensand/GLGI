@@ -100,6 +100,8 @@ GLGI::ResourceId GLGI::ResourceManager::addResource(Mesh * mesh)
 
 }
 
+
+
 GLGI::ResourceId GLGI::ResourceManager::addResource(Texture * texture)
 {
 	//lastID += 1;
@@ -108,6 +110,22 @@ GLGI::ResourceId GLGI::ResourceManager::addResource(Texture * texture)
 	textures.push_back(texture);
 	
 	return 0;// lastID;
+}
+
+GLGI::ResourceId GLGI::ResourceManager::addResource(Light * light)
+{
+	//lastID += 1;
+	//textures.push_back(std::pair<ResourceId, Texture*>(lastID, texture));
+	//TODO this is inefficient to update each time a resource is added
+	lights.push_back(light);
+
+	return 0;// lastID;
+}
+
+GLGI::ResourceId GLGI::ResourceManager::addResource(Material * material)
+{
+	materials.push_back(material);
+	return 0;
 }
 
 void GLGI::ResourceManager::update() {
@@ -280,5 +298,16 @@ GLuint GLGI::ResourceManager::getTextureId(GLGI::Texture * texture) {
 		}
 	}
 	throw("Texture uid not found");
+	return 0;//TODO this should throw
+}
+
+GLuint GLGI::ResourceManager::getMaterialId(Material * material)
+{
+	for (unsigned int i = 0; i < materials.size(); i++) {
+		if (material == materials[i]) {
+			return i;
+		}
+	}
+	throw("materialid not found");
 	return 0;//TODO this should throw
 }

@@ -79,9 +79,18 @@ void GLGI::Camera::update() {
 	glm::mat4 CameraS = glm::scale(this->CameraScale);
 	glm::mat4 CameraR = glm::rotate(this->CameraRotation[0], xAxis) * glm::rotate(this->CameraRotation[1], yAxis) *glm::rotate(this->CameraRotation[2], zAxis);
 	glm::mat4 CameraT = glm::translate(glm::vec3( -1 * this->CameraLocation[0],  -1 * this->CameraLocation[1],  -1 * this->CameraLocation[2]));
-	this->PerspectiveMatrix = glm::perspective(glm::radians(FOV), 16.0f / 10.0f, 0.1f, 100.0f);
+	this->PerspectiveMatrix = glm::perspective(glm::radians(FOV), 16.0f / 10.0f, 0.1f, 1000.0f);
 	this->ViewMatrix = CameraR * CameraT  * CameraS;
-	this->LookDirUnitVec = glm::vec3(glm::vec4(GLGI::zAxis, 0) * CameraR);//should the 0 be a 1?
+	//float a = CameraR[1][2] - CameraR[2][1];
+	//float b = CameraR[2][0] - CameraR[0][2];
+	//float c = CameraR[0][1] - CameraR[1][0];
+	//this->LookDirUnitVec = glm::normalize(glm::vec3(a, b, c));//should the 0 be a 1?
+	//glm::mat4 r = glm::rotate(270.f, yAxis);
+	glm::vec4 res4 = glm::rotate(-1.f * this->CameraRotation[2], zAxis) * glm::rotate(-1.f * this->CameraRotation[1], yAxis) *glm::rotate(-1.f * this->CameraRotation[0], xAxis) * glm::vec4(0., 0., 1., 1.);
+	glm::vec3 res = glm::vec3(res4) / res4[3];
+
+	this->LookDirUnitVec = glm::normalize(res);
+	
 	//this->ViewMatrix = glm::lookAt(
 	//	this->CameraLocation, // Camera is at (4,3,3), in World Space
 	//	glm::vec3(glm::vec4(0., 0., -1., 1.) * CameraR), // and looks at the origin
@@ -94,5 +103,6 @@ glm::mat4 GLGI::Camera::getPerspectiveMatrix() {
 }
 
 glm::vec3 GLGI::Camera::getLookDirUnitVec() {
+
 	return this->LookDirUnitVec;
 }
