@@ -1,16 +1,16 @@
 // GLGITest1.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-#include <Windows.h>
+//#include "stdafx.h"
+//#include <Windows.h>
 //#include "../GLGI_64/GLGI.h"
 #include <GLGI.h>
-
+#include <jpeglib.h>
 #define DEBUG DEBUG
 #ifdef DEBUG
 #define _CRTDBG_MAP_ALLOC true
 #include <stdlib.h>
-#include <crtdbg.h>
+//#include <crtdbg.h>
 #endif // DEBUG
 
 
@@ -32,7 +32,7 @@ int main()
 {
 
 #ifdef DEBUG
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
 	const char * vert = "resources/shaders/simple.vert";
@@ -63,9 +63,13 @@ int main()
 	//GLGI::Mesh * mesh2 = new GLGI::Mesh("capsule.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.png");
 	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.png");
+
+	
+	//GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.jpg");
+	//GLGI::Texture * tex2 = new GLGI::Texture("resources/cube2.jpg");
 	GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.jpg");
 	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube2.jpg");
-
+	
 	
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.jpg");
 	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.jpg");

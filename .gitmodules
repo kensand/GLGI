@@ -1,0 +1,9 @@
+[submodule "windows/GLGI/GLGI_64/deps/glfw"]
+	path = windows/GLGI/GLGI_64/deps/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "windows/GLGI/GLGI_64/build/glew"]
+	path = windows/GLGI/GLGI_64/build/glew
+	url = https://github.com/nigels-com/glew.git
+[submodule "windows/GLGI/GLGI_64/deps/glew"]
+	path = windows/GLGI/GLGI_64/deps/glew
+	url = https://github.com/nigels-com/glew.git

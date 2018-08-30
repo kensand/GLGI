@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/GLGIObjectTest1.dir/GLGIObjectTest1.cpp.o  -o GLGIObjectTest1 -Wl,-rpath,/home/kenny/git/GLGI/windows/GLGI/build/lib ../GLGI_64/libGLGI.a ../lib/libGLEW.so.2.1.0 ../GLGI_64/deps/glfw/src/libglfw3.a -lGL -lGLU -lrt -lm -ldl -lX11 -lpthread 

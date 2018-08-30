@@ -1,5 +1,7 @@
 .vs/
 
+**/CMakeFiles/**
+**/CMakeFiles/
 
 # Prerequisites
 *.d

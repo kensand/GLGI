@@ -1,0 +1,5 @@
+cmake_minimum_required (VERSION 3.1)
+set (CMAKE_CXX_STANDARD 11)
+project (GLGIProject)
+add_subdirectory(GLGI_64)
+add_subdirectory(GLGIObjectTest1)
