@@ -96,8 +96,8 @@ int main()
 	//GLGI::Mesh * mesh2 = new GLGI::Mesh("capsule.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.png");
 	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.png");
-	GLGI::Texture * tex1 = new GLGI::Texture("resources/test1.jpg");
-	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube2.jpg");
+	GLGI::Texture * tex1 = new GLGI::Texture("resources/test1.bmp");
+	GLGI::Texture * tex2 = new GLGI::Texture("resources/test1.bmp");
 	GLGI::Material * mat1 = new GLGI::Material();
 	//mat1->shininess = 1.;
 

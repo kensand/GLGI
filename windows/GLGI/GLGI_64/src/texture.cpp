@@ -9,10 +9,12 @@
 #include <common/texture.hpp>
 #include "GLGI.h"
 #include <common/CImg.h>
+//#include <common/lodepng.h>
 
 
 
 GLGI::Texture::Texture(const char * path){
+	
 	this->imagepath = path;
 	cimg_library::CImg<unsigned char> tim;
 	try {
@@ -42,6 +44,14 @@ GLGI::Texture::Texture(const char * path){
 		}
 	}
 	
+	
+	
+	//channels = 4;
+	//unsigned error = lodepng::decode(datavec, width, height, path);
+	//this->data = &(datavec[0]);
+
+
+
 
 	//memcpy_s(this->data, tim.size(), tim.data(), tim.size());
 	

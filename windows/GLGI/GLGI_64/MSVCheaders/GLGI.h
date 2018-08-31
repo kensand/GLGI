@@ -4,11 +4,11 @@
 // that uses this DLL. This way any other project whose source files include this file see 
 // GLGI_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
-#ifdef GLGI_EXPORTS
-#define GLGI_API __declspec(dllexport)
-#else
-#define GLGI_API __declspec(dllimport)
-#endif
+//#ifdef GLGI_EXPORTS
+//#define GLGI_API __declspec(dllexport)
+//#else
+//#define GLGI_API __declspec(dllimport)
+//#endif
 
 
 
@@ -54,7 +54,7 @@ namespace GLGI {
 	const glm::vec3 yAxis = glm::vec3(0, 1, 0);
 	const glm::vec3 zAxis = glm::vec3(0, 0, -1);
 
-	struct GLGI_API PackedVertex {
+	struct PackedVertex {
 		glm::vec3 position;
 		glm::vec3 normal;
 		glm::vec4 color;
@@ -64,7 +64,7 @@ namespace GLGI {
 		bool operator<(const PackedVertex that) const;
 	};
 
-	struct GLGI_API Mesh {
+	struct Mesh {
 		std::vector<PackedVertex> vertices;
 		Mesh(const char * path, glm::vec4 color=glm::vec4(0.f, 0.f, 0.f, 0.f));
 		
@@ -73,11 +73,11 @@ namespace GLGI {
 	};
 
 
-	class GLGI_API Texture {
+	class Texture {
 	public:
 		Texture(const char * path);
 		~Texture();
-		//std::vector <unsigned char> data;
+		std::vector <unsigned char> datavec;
 		
 		unsigned int imageSize;
 		unsigned int width, height, channels;
@@ -90,7 +90,7 @@ namespace GLGI {
 	
 	
 
-	class GLGI_API Camera {
+	class Camera {
 		friend class Scene;
 	public:
 		Camera();
@@ -128,7 +128,7 @@ namespace GLGI {
 		
 	};
 
-	class GLGI_API Light {
+	class Light {
 	public:
 		Light();
 
@@ -152,7 +152,7 @@ namespace GLGI {
 
 	};
 
-	class GLGI_API Material {
+	class Material {
 	public:
 		Material();
 		glm::vec3 emission;
@@ -162,7 +162,7 @@ namespace GLGI {
 		float shininess;
 	};
 
-	class GLGI_API Object {
+	class Object {
 		friend class Scene;
 	public:
 		Object();
@@ -235,7 +235,7 @@ namespace GLGI {
 
 	/*Scene - an object to represent the scene as a whole.
 	*/
-	class GLGI_API Scene {
+	class Scene {
 		friend class Renderer;
 	public:
 		Scene();
@@ -253,11 +253,11 @@ namespace GLGI {
 	};
 
 	
-	typedef GLGI_API long ResourceId;
+	typedef long ResourceId;
 
 
 
-	class GLGI_API ResourceManager {
+	class ResourceManager {
 		friend class Renderer;
 	private:
 		std::vector <Mesh *> meshes;
@@ -299,20 +299,20 @@ namespace GLGI {
 	private:
 	};
 
-	class GLGI_API Window;
+	class Window;
 
 	
 
-	class GLGI_API InputManager {
+	class InputManager {
 	public:
 
-		virtual class GLGI_API BaseKeyInputClass {
+		class BaseKeyInputClass {
 		public:
 			virtual void operator()(int key, int state, int mods) {};
 			virtual void update() {};
 		};
 
-		virtual class GLGI_API BaseMousePosClass {
+		class BaseMousePosClass {
 		public:
 			virtual void operator()(double x, double y) = 0;
 			virtual void update() = 0;
@@ -365,7 +365,7 @@ namespace GLGI {
 	
 
 
-	class GLGI_API Window {
+	class Window {
 		friend class Renderer;
 		friend class InputManager;
 	private:
@@ -416,7 +416,7 @@ namespace GLGI {
 
 	};
 
-	class GLGI_API Renderer {
+	class Renderer {
 	public:
 		Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath);
 		void render(Scene * scene);
@@ -552,6 +552,3 @@ namespace GLGI {
 	
 }
 
-extern GLGI_API int nGLGI;
-
-GLGI_API int fnGLGI(void);

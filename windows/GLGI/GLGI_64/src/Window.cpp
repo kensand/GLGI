@@ -1,13 +1,15 @@
 #include "stdafx.h"
 #include "GLGI.h"
 
-GLGI::Window * GLGI::Window::currentWindow = 0;
+//GLGI::Window * GLGI::Window::currentWindow = 0;
 void GLGI::Window::cursorPosCallBack(GLFWwindow* window, double xpos, double ypos)
 {
 	currentWindow->mouseX = xpos;
 	currentWindow->mouseY = ypos;
 
 }
+
+GLGI::Window * GLGI::Window::currentWindow;
 
 
 // This is the constructor of a class that has been exported.
