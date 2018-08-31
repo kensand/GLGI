@@ -1,17 +1,17 @@
 // GLGITest1.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-#include <Windows.h>
+//#include "stdafx.h"
+//#include <Windows.h>
 //#include "../GLGI_64/GLGI.h"
 #include <GLGI.h>
 
-#define DEBUG DEBUG
-#ifdef DEBUG
-#define _CRTDBG_MAP_ALLOC true
+//#define DEBUG DEBUG
+//#ifdef DEBUG
+//#define _CRTDBG_MAP_ALLOC true
 #include <stdlib.h>
-#include <crtdbg.h>
-#endif // DEBUG
+//#include <crtdbg.h>
+//#endif // DEBUG
 
 
 #include <sstream>
