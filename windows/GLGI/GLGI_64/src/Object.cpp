@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GLGI.h"
 
 void GLGI::Object::setScale(glm::vec3 scale) {

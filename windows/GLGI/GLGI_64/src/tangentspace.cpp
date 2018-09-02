@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include <vector>
 #include <glm/glm.hpp>
 

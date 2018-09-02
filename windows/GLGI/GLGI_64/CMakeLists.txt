@@ -2,8 +2,8 @@ cmake_minimum_required (VERSION 3.1)
 set (CMAKE_CXX_STANDARD 11)
 project (GLGI)
 execute_process( COMMAND "make" WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/deps/glew/auto)
-add_subdirectory(${PROJECT_SOURCE_DIR}/deps/glfw)
-add_subdirectory(${PROJECT_SOURCE_DIR}/deps/glew/build/cmake)
+add_subdirectory(${PROJECT_SOURCE_DIR}/deps/glfw EXCLUDE_FROM_ALL)
+add_subdirectory(${PROJECT_SOURCE_DIR}/deps/glew/build/cmake EXCLUDE_FROM_ALL)
 
 set (glfw_DIR ${PROJECT_SOURCE_DIR}/deps/glfw/)
 set (glew_DIR ${PROJECT_SOURCE_DIR}/deps/glew/build/cmake)
@@ -27,21 +27,21 @@ include_directories("${PROJECT_SOURCE_DIR}/include/")
 #include_directories($INCLUDES)
 
 include_directories("${PROJECT_SOURCE_DIR}/headers/")
-if (MSVC)
-	include_directories("${PROJECT_SOURCE_DIR}/MSVCheaders")
-	file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/MSVCheaders/*.h)
-endif (MSVC)
-if (UNIX)
-	include_directories("${PROJECT_SOURCE_DIR}/UNIXheaders")
-	file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/UNIXheaders/*.h)
-
-			
-endif (UNIX)
+#if (MSVC)
+#	include_directories("${PROJECT_SOURCE_DIR}/MSVCheaders")
+#	file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/MSVCheaders/*.h)
+#endif (MSVC)
+#if (UNIX)
+#	include_directories("${PROJECT_SOURCE_DIR}/UNIXheaders")
+#	file(GLOB HEADERS ${PROJECT_SOURCE_DIR}/UNIXheaders/*.h)
+#
+#			
+#endif (UNIX)
 #link_directories(/lib/libgl)
 
 
 add_library (GLGI ${GENHEADERS} ${HEADERS} ${SOURCES} )
 
-link_libraries(GLGI glew glfw libjpeg)
+link_libraries(GLGI glew glfw)
 
 

@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "GLGI.h"
 
 //GLGI::Window * GLGI::Window::currentWindow = 0;

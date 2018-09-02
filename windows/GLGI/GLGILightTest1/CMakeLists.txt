@@ -29,6 +29,6 @@ include_directories( ${CMAKE_SOURCE_DIR}/GLGI_64/UNIXheaders)
 
 include_directories( ${CMAKE_SOURCE_DIR}/GLGI_64/include)
 #add_subdirectory(${CMAKE_SOURCE_DIR}/GLGI_64/ ${CMAKE_SOURCE_DIR}/GLGI_64/build/lib/)
-link_libraries(GLGI glew glfw libjpeg)
+link_libraries(GLGI glew glfw)
 add_executable(GLGILightTest1 ${GENHEADERS} ${HEADERS} ${SOURCES} )
 
