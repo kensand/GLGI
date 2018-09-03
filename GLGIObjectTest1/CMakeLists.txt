@@ -25,7 +25,7 @@ file(GLOB SOURCES ${PROJECT_SOURCE_DIR}/GLGIObjectTest1.cpp)
 #file(GLOB INCLUDES ${PROJECT_VERSION}/includes/*)
 file(GLOB GENHEADERS ${PROJECT_SOURCE_DIR}/headers/*.h)
 
-include_directories( ${CMAKE_SOURCE_DIR}/GLGI_64/UNIXheaders)
+include_directories( ${CMAKE_SOURCE_DIR}/GLGI_64/headers)
 
 include_directories( ${CMAKE_SOURCE_DIR}/GLGI_64/include)
 #add_subdirectory(${CMAKE_SOURCE_DIR}/GLGI_64/ ${CMAKE_SOURCE_DIR}/GLGI_64/build/lib/)

@@ -67,8 +67,8 @@ int main()
 	
 	//GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.jpg");
 	//GLGI::Texture * tex2 = new GLGI::Texture("resources/cube2.jpg");
-	GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.jpg");
-	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube2.jpg");
+	GLGI::Texture * tex1 = new GLGI::Texture("resources/cube.png");
+	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube.png");
 	
 	
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.jpg");
