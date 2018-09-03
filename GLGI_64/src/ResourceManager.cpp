@@ -154,7 +154,7 @@ void GLGI::ResourceManager::update() {
 		error = 0;
 	}
 
-	glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_RGB8, texdims2D[0], texdims2D[1], numTextures);//RGB8
+	glTexStorage3D(GL_TEXTURE_2D_ARRAY, 1, GL_RGBA8, texdims2D[0], texdims2D[1], numTextures);//RGB8
 	if ((error = glGetError()) != GL_NO_ERROR) {
 		printf("OPENGL error: %d\n", error);
 		error = 0;
@@ -170,7 +170,7 @@ void GLGI::ResourceManager::update() {
 		glTexSubImage3D(GL_TEXTURE_2D_ARRAY, 0,
 			0, 0, i, //x, y, z offsets)
 			texdims2D[0], texdims2D[1], 1, //x, y, z dimensions
-			GL_RGB, GL_UNSIGNED_BYTE, textures[i]->getDataLoc()
+			GL_RGBA, GL_UNSIGNED_BYTE, textures[i]->getDataLoc()
 		);
 		if ((error = glGetError()) != GL_NO_ERROR) {
 			printf("OPENGL error: %d\n", error);

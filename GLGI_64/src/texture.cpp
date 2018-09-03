@@ -8,12 +8,12 @@
 #include <common/texture.hpp>
 #include "GLGI.h"
 #include <common/CImg.h>
-//#include <common/lodepng.h>
+#include <common/lodepng.h>
 
 
 
 GLGI::Texture::Texture(const char * path){
-	
+	/*	
 	this->imagepath = path;
 	cimg_library::CImg<unsigned char> tim;
 	try {
@@ -43,11 +43,14 @@ GLGI::Texture::Texture(const char * path){
 		}
 	}
 	
+	*/
+	std::vector <unsigned char> datavec;
+	channels = 4;
+	unsigned error = lodepng::decode(datavec, width, height, path);
+
+	this->data = new unsigned char[datavec.size()];
+	memcpy(this->data, &(datavec[0]), datavec.size());
 	
-	
-	//channels = 4;
-	//unsigned error = lodepng::decode(datavec, width, height, path);
-	//this->data = &(datavec[0]);
 
 
 
