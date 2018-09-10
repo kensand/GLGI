@@ -38,9 +38,12 @@ int main()
 	const char * vert = "resources/shaders/simple.vert";
 	const char * frag = "resources/shaders/simple.frag";
 
+	const char * shadowvert = "resources/shaders/shadow.vert";
+	const char * shadowfrag = "resources/shaders/shadow.frag";
+
 	GLGI::Window window;
 	GLGI::ResourceManager * rm = new GLGI::ResourceManager();
-	GLGI::Renderer renderer(rm, &window, vert, frag);
+	GLGI::Renderer renderer(rm, &window, vert, frag, shadowvert, shadowfrag);
 	GLGI::Scene scene;
 
 
@@ -90,13 +93,13 @@ int main()
 
 	
 
-	GLGI::Mesh * mesh1 = new GLGI::Mesh("resources/sphere.obj", glm::vec4(1.f, 1.f, 0.f, 0.2f));
-	GLGI::Mesh * mesh2 = new GLGI::Mesh("resources/cube2.obj", glm::vec4(1.f, 1.f, 1.f, 1.f));
+	GLGI::Mesh * mesh1 = new GLGI::Mesh("resources/suzanne.obj", glm::vec4(1.f, 1.f, 0.f, 0.2f));
+	GLGI::Mesh * mesh2 = new GLGI::Mesh("resources/cube.obj", glm::vec4(1.f, 1.f, 1.f, 1.f));
 	//GLGI::Mesh * mesh1 = new GLGI::Mesh("capsule.obj", glm::vec4(0.f, 1.f, 0.f, 0.f));
 	//GLGI::Mesh * mesh2 = new GLGI::Mesh("capsule.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.png");
 	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.png");
-	GLGI::Texture * tex1 = new GLGI::Texture("resources/cube.png");
+	GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.png");
 	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube.png");
 	GLGI::Material * mat1 = new GLGI::Material();
 	//mat1->shininess = 1.;

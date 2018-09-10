@@ -2,10 +2,43 @@
 #include "GLGI.h"
 
 
-GLGI::Renderer::Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath)
+GLGI::Renderer::Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath, const char * vertexshadowshaderpath, const char * fragmentshadowshaderpath)
 {
-	//programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
 	programID = LoadShaders(vertexshaderpath, fragmentshaderpath);
+        if (vertexshadowshaderpath != NULL && fragmentshadowshaderpath != NULL) {
+                shadowProgramID = LoadShaders(vertexshadowshaderpath, fragmentshadowshaderpath);
+        }
+	else{
+		shadowProgramID = NULL;
+	}
+        glGenFramebuffers(1, &shadowfbo);
+        glGenTextures(1, &shadowTexturesCubeMap);
+        glActiveTexture(GL_TEXTURE1);
+        GLint error;
+        if ((error = glGetError()) != GL_NO_ERROR) {
+                printf("OPENGL error: %d\n", error);
+                error = GL_NO_ERROR;
+        }
+        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, shadowTexturesCubeMap);
+        if ((error = glGetError()) != GL_NO_ERROR) {
+                printf("OPENGL error: %d\n", error);
+                error = GL_NO_ERROR;
+        }
+
+        glTexImage3D(GL_TEXTURE_CUBE_MAP_ARRAY, 1, GL_DEPTH_COMPONENT, 1024, 1024, maxlights * 6, 0, GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT16, (void*) NULL);
+        if ((error = glGetError()) != GL_NO_ERROR) {
+                printf("OPENGL error: %d\n", error);
+                error = GL_NO_ERROR;
+        }
+        glBindTexture(GL_TEXTURE_CUBE_MAP_ARRAY, 1);
+
+
+
+
+	//programID = LoadShaders("StandardShading.vertexshader", "StandardShading.fragmentshader");
+
+
+
 	mvpUniform = glGetUniformLocation(programID, "mvpMatrix");
 	if (mvpUniform < 0) {
 		printf("GL shader ERROR: mvp matrix uniform not found\n");
@@ -116,6 +149,92 @@ void GLGI::Renderer::render(Scene * scene)
 	light->calcPosition = glm::vec3(scene->currentCamera->getViewMatrix() * glm::vec4(light->position, 1.0));
 
 	setLightUniform(index, *light);
+
+	if (shadowProgramID != NULL){
+		const glm::vec3 cubemapdirs[6] = { glm::vec3(0, -90, 0), glm::vec3(0, 90, 0), glm::vec3(90, 0, 0), glm::vec3(-90, 0, 0), glm::vec3(0, 180, 0), glm::vec3(0, 0, 0)  };
+		for (int i = 0; i < nl; i++) {
+			Light * light = manager->lights[i];
+			Camera lightcam = Camera();
+
+			lightcam.FOV = 90.f;
+			lightcam.aspectRatio = 1.0f;
+			lightcam.nearFace = 0.f;
+			lightcam.farFace = 1000000000.f;
+
+
+			for (int dirind = 0; dirind < 6; ++dirind) {
+				lightcam.setPosition(light->position);
+				lightcam.setRotation(cubemapdirs[dirind][0], cubemapdirs[dirind][1], cubemapdirs[dirind][2])
+	;
+				if (light->local) {
+					lightcam.update();
+				}
+				glFramebufferTextureLayer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, shadowTexturesCubeMap, 0, i * 6 + dirind);
+				//glFramebufferTexture3D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL, glcubemapdirs[dirind], manager->shadowTexturesCubeMap, 1, i);
+				if ((error = glGetError()) != GL_NO_ERROR) {
+					printf("OPENGL error: %d\n", error);
+					error = GL_NO_ERROR;
+				}
+
+				for (unsigned int j = 0; j < scene->objects.size(); j++) {
+					if (scene->objects[j]->isVisible()) {
+						if (!light->local) {
+							lightcam.setPosition(scene->objects[j]->getPosition() - glm::vec3(light->position[0] * 1000.f, light->position[1] * 1000.f, light->position[2] * 1000.f ));
+							lightcam.update();
+						}
+						glm::mat4 mvp = lightcam.getPerspectiveMatrix() * lightcam.getViewMatrix() * scene->objects[j]->getModelMatrix();
+						if ((error = glGetError()) != GL_NO_ERROR) {
+							printf("OPENGL error: %d\n", error);
+							error = GL_NO_ERROR;
+						}
+						glUniformMatrix4fv(mvpShadowUniform, 1, GL_FALSE, &(mvp[0][0]));
+						if ((error = glGetError()) != GL_NO_ERROR) {
+							printf("OPENGL error: %d\n", error);
+							error = GL_NO_ERROR;
+						}
+						GLuint start = manager->getMeshStart(scene->objects[j]->getMesh());
+						GLuint size = scene->objects[j]->getMesh()->size();
+
+						unsigned short status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+						switch (status)
+						{
+
+						case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+							printf("incomplete attachment\n");
+							break;
+
+						case GL_FRAMEBUFFER_INCOMPLETE_DIMENSIONS_EXT:
+							printf("incomplete dims\n");
+							break;
+						case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+							printf("incomplete missing attachment\n");
+							break;
+						case GL_FRAMEBUFFER_UNSUPPORTED:
+							printf("unsupported\n");
+							break;
+						case GL_FRAMEBUFFER_COMPLETE:
+							printf("complete\n");
+							break;
+						default:
+							printf("unknown response\n");
+							break;
+						}
+						printf("FrameBufferStatus= %x \n", &status);
+
+						glDrawArrays(GL_TRIANGLES, start, size);
+						if ((error = glGetError()) != GL_NO_ERROR) {
+							printf("OPENGL error: %d\n", error);
+							error = GL_NO_ERROR;
+						}
+
+
+					}
+				}
+			}
+		}
+	}
+
+
 	if ((error = glGetError()) != GL_NO_ERROR) {
 		printf("OPENGL error: %d\n", error);
 		error = 0;

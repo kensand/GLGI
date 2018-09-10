@@ -114,7 +114,10 @@ namespace GLGI {
 		glm::mat4 getPerspectiveMatrix();
 		glm::vec3 getScale();
 		glm::mat4 getRotationMatrix();
-		
+		float FOV;
+		float aspectRatio;
+		float nearFace;
+		float farFace;
 
 
 	private:
@@ -125,7 +128,7 @@ namespace GLGI {
 		glm::vec3 CameraRotation;
 		glm::vec3 CameraScale;
 		glm::vec3 LookDirUnitVec;
-		
+
 	};
 
 	class  Light {
@@ -418,13 +421,14 @@ namespace GLGI {
 
 	class  Renderer {
 	public:
-		Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath);
+		Renderer(ResourceManager * resourceManager, Window * window, const char * vertexshaderpath, const char * fragmentshaderpath, const char * vertexshadowshaderpath = NULL, const char * fragmentshadowshaderpath = NULL);
 		void render(Scene * scene);
 		const int maxlights = 10;
 		
 
 	private:
 		GLuint programID;
+		GLuint shadowProgramID;
 		Window * renderWindow;
 		ResourceManager * manager;
 		GLint mvpUniform;
@@ -437,6 +441,11 @@ namespace GLGI {
 		GLint materialIndexUniform;
 		GLint numLightsUniform;
 		glm::vec4 clearColor;
+
+		GLuint shadowfbo;
+		GLuint shadowTexturesCubeMap;
+		GLint mvpShadowUniform;
+
 		void setLightUniform(uint index, Light & light);
 		void setMaterialUniform(uint index, Material & material);
 	};	

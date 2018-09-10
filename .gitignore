@@ -2,6 +2,10 @@
 
 **/CMakeFiles/**
 **/CMakeFiles/
+Build/
+Build/**
+build/
+build/**
 
 # Prerequisites
 *.d

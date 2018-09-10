@@ -90,14 +90,15 @@ int main()
 
 	
 
-	GLGI::Mesh * mesh1 = new GLGI::Mesh("resources/sphere.obj", glm::vec4(1.f, 1.f, 0.f, 0.2f));
+	//GLGI::Mesh * mesh1 = new GLGI::Mesh("resources/sphere.obj", glm::vec4(1.f, 1.f, 0.f, 0.2f));
+	GLGI::Mesh * mesh1 = new GLGI::Mesh("resources/suzanne.obj", glm::vec4(1.f, 1.f, 0.f, 0.2f)); 
 	GLGI::Mesh * mesh2 = new GLGI::Mesh("resources/cube2.obj", glm::vec4(1.f, 1.f, 1.f, 1.f));
 	//GLGI::Mesh * mesh1 = new GLGI::Mesh("capsule.obj", glm::vec4(0.f, 1.f, 0.f, 0.f));
 	//GLGI::Mesh * mesh2 = new GLGI::Mesh("capsule.obj", glm::vec4(1.f, 0.f, 0.f, 1.f));
 	//GLGI::Texture * tex2 = new GLGI::Texture("capsule.png");
 	//GLGI::Texture * tex1 = new GLGI::Texture("capsule.png");
-	GLGI::Texture * tex1 = new GLGI::Texture("resources/cube.png");
 	GLGI::Texture * tex2 = new GLGI::Texture("resources/cube.png");
+	GLGI::Texture * tex1 = new GLGI::Texture("resources/suzanne.png");
 	GLGI::Material * mat1 = new GLGI::Material();
 	//mat1->shininess = 1.;
 
